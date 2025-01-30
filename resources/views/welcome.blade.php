@@ -1,176 +1,531 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('frontend.app')
 
-        <title>Laravel</title>
+@section('title', 'Pure Water')
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+@section('content')
 
-        <!-- Styles / Scripts -->
-        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @else
-            <style>
-                /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.absolute{position:absolute}.relative{position:relative}.-left-20{left:-5rem}.top-0{top:0px}.-bottom-16{bottom:-4rem}.-left-16{left:-4rem}.-mx-3{margin-left:-0.75rem;margin-right:-0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.aspect-video{aspect-ratio:16 / 9}.size-12{width:3rem;height:3rem}.size-5{width:1.25rem;height:1.25rem}.size-6{width:1.5rem;height:1.5rem}.h-12{height:3rem}.h-40{height:10rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-full{width:100%}.w-\[calc\(100\%\+8rem\)\]{width:calc(100% + 8rem)}.w-auto{width:auto}.max-w-\[877px\]{max-width:877px}.max-w-2xl{max-width:42rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.items-stretch{align-items:stretch}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.self-center{align-self:center}.overflow-hidden{overflow:hidden}.rounded-\[10px\]{border-radius:10px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-sm{border-radius:0.125rem}.bg-\[\#FF2D20\]\/10{background-color:rgb(255 45 32 / 0.1)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-white{--tw-gradient-to:rgb(255 255 255 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fff var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-white{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.stroke-\[\#FF2D20\]{stroke:#FF2D20}.object-cover{object-fit:cover}.object-top{object-position:top}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pt-3{padding-top:0.75rem}.text-center{text-align:center}.font-sans{font-family:Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-sm\/relaxed{font-size:0.875rem;line-height:1.625}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-semibold{font-weight:600}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-\[0px_14px_34px_0px_rgba\(0\2c 0\2c 0\2c 0\.08\)\]{--tw-shadow:0px 14px 34px 0px rgba(0,0,0,0.08);--tw-shadow-colored:0px 14px 34px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-transparent{--tw-ring-color:transparent}.ring-white\/\[0\.05\]{--tw-ring-color:rgb(255 255 255 / 0.05)}.drop-shadow-\[0px_4px_34px_rgba\(0\2c 0\2c 0\2c 0\.06\)\]{--tw-drop-shadow:drop-shadow(0px 4px 34px rgba(0,0,0,0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-\[0px_4px_34px_rgba\(0\2c 0\2c 0\2c 0\.25\)\]{--tw-drop-shadow:drop-shadow(0px 4px 34px rgba(0,0,0,0.25));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.selection\:bg-\[\#FF2D20\] *::selection{--tw-bg-opacity:1;background-color:rgb(255 45 32 / var(--tw-bg-opacity))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.selection\:bg-\[\#FF2D20\]::selection{--tw-bg-opacity:1;background-color:rgb(255 45 32 / var(--tw-bg-opacity))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:text-black:hover{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity))}.hover\:text-black\/70:hover{color:rgb(0 0 0 / 0.7)}.hover\:ring-black\/20:hover{--tw-ring-color:rgb(0 0 0 / 0.2)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus-visible\:ring-1:focus-visible{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus-visible\:ring-\[\#FF2D20\]:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 45 32 / var(--tw-ring-opacity))}@media (min-width: 640px){.sm\:size-16{width:4rem;height:4rem}.sm\:size-6{width:1.5rem;height:1.5rem}.sm\:pt-5{padding-top:1.25rem}}@media (min-width: 768px){.md\:row-span-3{grid-row:span 3 / span 3}}@media (min-width: 1024px){.lg\:col-start-2{grid-column-start:2}.lg\:h-16{height:4rem}.lg\:max-w-7xl{max-width:80rem}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:flex-col{flex-direction:column}.lg\:items-end{align-items:flex-end}.lg\:justify-center{justify-content:center}.lg\:gap-8{gap:2rem}.lg\:p-10{padding:2.5rem}.lg\:pb-10{padding-bottom:2.5rem}.lg\:pt-0{padding-top:0px}.lg\:text-\[\#FF2D20\]{--tw-text-opacity:1;color:rgb(255 45 32 / var(--tw-text-opacity))}}@media (prefers-color-scheme: dark){.dark\:block{display:block}.dark\:hidden{display:none}.dark\:bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity))}.dark\:bg-zinc-900{--tw-bg-opacity:1;background-color:rgb(24 24 27 / var(--tw-bg-opacity))}.dark\:via-zinc-900{--tw-gradient-to:rgb(24 24 27 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #18181b var(--tw-gradient-via-position), var(--tw-gradient-to)}.dark\:to-zinc-900{--tw-gradient-to:#18181b var(--tw-gradient-to-position)}.dark\:text-white\/50{color:rgb(255 255 255 / 0.5)}.dark\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:text-white\/70{color:rgb(255 255 255 / 0.7)}.dark\:ring-zinc-800{--tw-ring-opacity:1;--tw-ring-color:rgb(39 39 42 / var(--tw-ring-opacity))}.dark\:hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:hover\:text-white\/70:hover{color:rgb(255 255 255 / 0.7)}.dark\:hover\:text-white\/80:hover{color:rgb(255 255 255 / 0.8)}.dark\:hover\:ring-zinc-700:hover{--tw-ring-opacity:1;--tw-ring-color:rgb(63 63 70 / var(--tw-ring-opacity))}.dark\:focus-visible\:ring-\[\#FF2D20\]:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 45 32 / var(--tw-ring-opacity))}.dark\:focus-visible\:ring-white:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 255 255 / var(--tw-ring-opacity))}}
-            </style>
-        @endif
-    </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-        <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-            <img id="background" class="absolute -left-20 top-0 max-w-[877px]" src="https://laravel.com/assets/img/welcome/background.svg" alt="Laravel background" />
-            <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-                <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                    <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-                        <div class="flex lg:justify-center lg:col-start-2">
-                            <svg class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20]" viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z" fill="currentColor"/></svg>
-                        </div>
-                        @if (Route::has('login'))
-                            <nav class="-mx-3 flex flex-1 justify-end">
-                                @auth
-                                    <a
-                                        href="{{ url('/dashboard') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        Dashboard
-                                    </a>
-                                @else
-                                    <a
-                                        href="{{ route('login') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        Log in
-                                    </a>
+{{-- Banner section start --}}
+<div class="bi-home-banner-section"> 
+    <!-- <video id="myVideo" class="banner-video" autoplay muted loop>
+     <source src="./assets/video/indexBanner.mov" type="video/mp4" />
+   </video> -->
+   <video id="myVideo" class="banner-video" autoplay muted loop playsinline webkit-playsinline>
+     <source src="./frontend/pure-water/assets/video/indexBanner.mov" type="video/mp4" />
+ </video>
+   <div class="bi-banner-content">
+     <div class="container bi-banner-content-container">
+       <!-- top logo -->
+        <a href="index.html">
+          <svg class="mobile--logo" xmlns="http://www.w3.org/2000/svg" width="109" height="87" viewBox="0 0 109 87" fill="none">
+            <path
+              d="M38.2447 35.1764C39.8826 41.4457 45.7158 47.184 53.9053 47.184C61.9706 47.184 65.3114 42.6978 65.4119 42.5584C60.1169 46.647 54.0235 45.653 50.5142 44.125C47.0107 42.594 41.7334 36.8587 41.4436 30.8919C41.1598 24.9282 42.8746 21.2283 42.8746 21.2283C43.0402 22.4477 43.7704 23.7414 44.752 24.9786C44.752 24.9786 44.7549 24.9816 44.7638 24.9905C44.7845 25.0142 44.7993 25.035 44.82 25.0587C46.7062 27.4057 49.4735 29.5449 50.9902 30.5863C53.3258 32.1826 55.28 34.761 54.0265 36.6985C52.7759 38.6359 48.8556 37.9209 46.1563 34.5681C46.0055 34.3782 45.8577 34.1883 45.7217 33.9955C43.1377 30.4113 43.0313 26.4859 43.0313 26.4859C42.3217 31.0492 44.4238 34.9716 46.2834 37.2207C48.3766 39.7456 53.4293 42.1934 56.4212 40.2055C59.4103 38.2146 59.7 34.8322 58.2513 32.058C56.8026 29.2838 51.1587 26.8894 47.5488 23.7414C43.9389 20.5933 43.6551 15.5553 43.6551 15.5553C38.9691 23.2043 36.6039 28.9011 38.2447 35.1764Z"
+              fill="#00CD78" />
+            <path
+              d="M70.2108 28.6934C69.5397 25.5097 67.8959 21.8662 65.4154 17.5818C59.736 7.76973 54.0772 0.485626 54.0772 0.485626C54.0772 0.485626 49.5982 6.74016 47.842 9.25325C47.8065 9.30369 47.774 9.35117 47.7385 9.40161C46.5204 11.1551 45.938 13.2706 46.0799 15.4039C46.0829 15.4455 46.3845 19.4925 49.1429 21.9018C50.4585 23.0471 52.1496 24.136 53.7845 25.1893C56.5873 26.9903 59.2363 28.6934 60.4012 30.9275C62.5801 35.1052 61.4951 39.7545 57.761 42.2379C57.2643 42.5702 56.744 42.8195 56.203 43.0064C57.6546 43.0835 60.3953 42.8284 63.2956 41.6149C68.3867 39.4875 71.352 34.1023 70.2108 28.6934Z"
+              fill="#29BBEE" />
+            <path
+              d="M71.6 42.9441C70.855 42.7394 70.11 42.6266 69.3502 42.6177C70.2282 43.2527 72.762 44.5107 72.7738 45.5877C72.4633 46.2434 71.6592 46.5787 71.0058 46.9081C69.7936 47.4659 68.4425 47.908 67.0825 48.3589C65.7196 48.8129 64.33 49.2461 62.9316 49.8247C66.0537 50.3231 72.7531 49.709 74.3259 46.4838C75.0887 44.6383 73.1315 43.309 71.6 42.9441Z"
+              fill="#29BBEE" />
+            <path
+              d="M37.275 46.7627C36.6984 46.4482 35.711 46.0061 35.9091 45.297C36.5418 44.0152 38.2151 43.3535 39.4776 42.6177C37.8633 42.8432 35.7878 43.1992 34.7708 44.7332C33.9046 46.1396 35.3207 47.6528 36.456 48.267C39.9122 50.1985 43.9803 50.6465 47.8474 50.7979C50.047 50.8424 52.2466 50.7148 54.4167 50.3113C52.2466 49.9018 50.1061 49.6081 47.9804 49.2698C44.3558 48.6378 40.6483 48.2136 37.275 46.7627Z"
+              fill="#29BBEE" />
+            <path
+              d="M6.58707 57.7704C8.09192 57.7704 9.28339 58.1947 10.1703 59.0433C11.0543 59.8919 11.4978 61.0104 11.4978 62.399C11.4978 63.8143 11.0425 64.9507 10.1319 65.8052C9.2213 66.6597 7.9914 67.087 6.44811 67.087H3.29353V71.1933H0V57.7734H6.58707V57.7704ZM6.20864 64.3217C6.84724 64.3217 7.34984 64.1525 7.71645 63.8113C8.08305 63.4701 8.26635 63.0132 8.26635 62.4406C8.26635 61.8917 8.08009 61.4496 7.70758 61.1083C7.33506 60.7671 6.83541 60.598 6.21159 60.598H3.29649V64.3246H6.20864V64.3217Z"
+              fill="#4E626D" />
+            <path
+              d="M23.2706 71.1905H20.0776V70.2291C19.2794 71.0718 18.2535 71.4901 17.0029 71.4901C15.8321 71.4901 14.8919 71.1044 14.1794 70.3389C13.4669 69.5704 13.1121 68.5587 13.1121 67.3036V61.1351H16.2844V66.6242C16.2844 67.2116 16.4441 67.6893 16.7634 68.0573C17.0827 68.4252 17.4966 68.6091 18.0022 68.6091C18.6555 68.6091 19.1641 68.3777 19.5277 67.9178C19.8943 67.4579 20.0776 66.7518 20.0776 65.8053V61.1351H23.2706V71.1905Z"
+              fill="#4E626D" />
+            <path
+              d="M32.9502 61.0758L32.8112 64.2802H32.2318C29.9287 64.2802 28.7786 65.5353 28.7786 68.0454V71.1905H25.5856V61.1351H28.7786V63.0578C29.6034 61.6811 30.7535 60.9957 32.2318 60.9957C32.4949 60.9957 32.7373 61.0224 32.9502 61.0758Z"
+              fill="#4E626D" />
+            <path
+              d="M44.0634 66.9832H36.7194C36.8525 67.5855 37.1127 68.0573 37.497 68.4044C37.8843 68.7516 38.3426 68.9237 38.8747 68.9237C39.874 68.9237 40.5836 68.5379 41.0093 67.7635L43.8446 68.3451C43.4189 69.3865 42.7773 70.1698 41.9199 70.6979C41.0625 71.2261 40.0455 71.4901 38.8747 71.4901C37.3965 71.4901 36.1459 70.9917 35.1229 69.9977C34.097 69.0038 33.5856 67.725 33.5856 66.1613C33.5856 64.6125 34.097 63.3367 35.1229 62.3338C36.1488 61.331 37.4054 60.8325 38.8954 60.8325C40.3471 60.8325 41.5622 61.3191 42.5467 62.2953C43.5312 63.2714 44.0368 64.5591 44.0634 66.1613V66.9832ZM37.5975 63.8589C37.1984 64.1408 36.9264 64.5265 36.7786 65.022H40.9118C40.7639 64.4998 40.5126 64.1081 40.1519 63.8411C39.7912 63.5741 39.3744 63.4405 38.8954 63.4405C38.4283 63.4376 37.9967 63.58 37.5975 63.8589Z"
+              fill="#4E626D" />
+            <path
+              d="M64.679 71.1905H61.146L58.9109 62.8976L56.6551 71.1905H53.1428L49.3319 57.7705H52.7052L55.0409 66.2236L57.3351 57.7705H60.469L62.7662 66.2236L65.1018 57.7705H68.4959L64.679 71.1905Z"
+              fill="#4E626D" />
+            <path
+              d="M79.4054 71.1905H76.2124V70.3894C75.3994 71.1252 74.3616 71.4901 73.0992 71.4901C71.7422 71.4901 70.5862 70.9917 69.6342 69.9977C68.6822 69.0038 68.2062 67.725 68.2062 66.1613C68.2062 64.6125 68.6822 63.3367 69.6342 62.3338C70.5862 61.331 71.7392 60.8325 73.0992 60.8325C74.3616 60.8325 75.3994 61.2004 76.2124 61.9333V61.1322H79.4054V71.1905ZM75.4851 68.0365C75.97 67.5499 76.2154 66.9239 76.2154 66.1643C76.2154 65.4166 75.9729 64.7965 75.4851 64.301C75.0002 63.8055 74.4237 63.5592 73.7585 63.5592C73.0519 63.5592 72.4754 63.8025 72.023 64.2891C71.5707 64.7757 71.3431 65.4018 71.3431 66.1613C71.3431 66.9357 71.5677 67.5647 72.023 68.0454C72.4754 68.5261 73.0549 68.7664 73.7585 68.7664C74.4237 68.7664 74.9973 68.5231 75.4851 68.0365Z"
+              fill="#4E626D" />
+            <path
+              d="M89.1443 70.7513C88.2248 71.2439 87.3142 71.4931 86.4095 71.4931C85.1441 71.4931 84.1626 71.1519 83.4648 70.4724C82.7671 69.793 82.4182 68.7961 82.4182 67.4876V63.6809H80.603V61.1381H82.4182V58.174H85.6113V61.1381H88.5648V63.6809H85.6113V67.1672C85.6113 68.1433 86.0577 68.6299 86.9476 68.6299C87.4532 68.6299 87.938 68.4964 88.4051 68.2293L89.1443 70.7513Z"
+              fill="#4E626D" />
+            <path
+              d="M99.9796 66.9832H92.6357C92.7687 67.5855 93.0289 68.0573 93.4133 68.4044C93.7976 68.7516 94.2588 68.9237 94.791 68.9237C95.7873 68.9237 96.4998 68.5379 96.9256 67.7635L99.7609 68.3451C99.3351 69.3865 98.6936 70.1698 97.8362 70.6979C96.9788 71.2261 95.9618 71.4901 94.791 71.4901C93.3128 71.4901 92.0622 70.9917 91.0392 69.9977C90.0163 69.0038 89.5018 67.725 89.5018 66.1613C89.5018 64.6125 90.0133 63.3367 91.0392 62.3338C92.0651 61.331 93.3216 60.8325 94.8117 60.8325C96.2633 60.8325 97.4784 61.3191 98.463 62.2953C99.4475 63.2714 99.953 64.5591 99.9796 66.1613V66.9832ZM93.5138 63.8589C93.1147 64.1408 92.8427 64.5265 92.6948 65.022H96.828C96.6802 64.4998 96.4289 64.1081 96.0712 63.8411C95.7134 63.5741 95.2906 63.4405 94.8146 63.4405C94.3446 63.4376 93.9129 63.58 93.5138 63.8589Z"
+              fill="#4E626D" />
+            <path
+              d="M109 61.0758L108.861 64.2802H108.282C105.979 64.2802 104.829 65.5353 104.829 68.0454V71.1905H101.636V61.1351H104.829V63.0578C105.653 61.6811 106.804 60.9957 108.282 60.9957C108.545 60.9957 108.787 61.0224 109 61.0758Z"
+              fill="#4E626D" />
+            <path d="M20.631 85.8745V76.8725H22.0649V85.8745H20.631Z" fill="#4E626D" />
+            <path
+              d="M29.8018 79.8069C30.2926 80.332 30.538 81.0085 30.538 81.8423V85.8745H29.1307V82.1241C29.1307 81.5782 28.9858 81.1391 28.6961 80.8068C28.4064 80.4745 28.025 80.3083 27.5519 80.3083C26.937 80.3083 26.4521 80.519 26.1003 80.9403C25.7485 81.3616 25.5711 81.9788 25.5711 82.7947V85.8715H24.1786V79.2075H25.5711V80.0264C26.1328 79.3529 26.9015 79.0176 27.8742 79.0176C28.6665 79.0206 29.3111 79.2817 29.8018 79.8069Z"
+              fill="#4E626D" />
+            <path
+              d="M38.1035 79.8069C38.5943 80.332 38.8397 81.0085 38.8397 81.8423V85.8745H37.4324V82.1241C37.4324 81.5782 37.2875 81.1391 36.9978 80.8068C36.7081 80.4745 36.3267 80.3083 35.8536 80.3083C35.2387 80.3083 34.7538 80.519 34.402 80.9403C34.0502 81.3616 33.8728 81.9788 33.8728 82.7947V85.8715H32.4803V79.2075H33.8728V80.0264C34.4345 79.3529 35.2032 79.0176 36.1759 79.0176C36.9712 79.0206 37.6128 79.2817 38.1035 79.8069Z"
+              fill="#4E626D" />
+            <path
+              d="M46.3048 80.0354C46.9877 80.6851 47.3277 81.5219 47.3277 82.5425C47.3277 83.5632 46.9847 84.3999 46.2959 85.0556C45.607 85.7084 44.7703 86.0377 43.7799 86.0377C42.7806 86.0377 41.9351 85.7113 41.2432 85.0556C40.5514 84.3999 40.2055 83.5632 40.2055 82.5425C40.2055 81.5219 40.5514 80.6851 41.2432 80.0354C41.9351 79.3856 42.7806 79.0622 43.7799 79.0622C44.7792 79.0622 45.6218 79.3856 46.3048 80.0354ZM45.3202 84.1863C45.7578 83.762 45.9766 83.2131 45.9766 82.5395C45.9766 81.866 45.7578 81.3171 45.3202 80.8928C44.8827 80.4685 44.3712 80.2549 43.7799 80.2549C43.1738 80.2549 42.6535 80.4685 42.2189 80.8928C41.7872 81.3171 41.5685 81.866 41.5685 82.5395C41.5685 83.2101 41.7843 83.759 42.2189 84.1863C42.6535 84.6135 43.1709 84.8242 43.7799 84.8242C44.3712 84.8242 44.8827 84.6135 45.3202 84.1863Z"
+              fill="#4E626D" />
+            <path
+              d="M52.1502 85.8745H50.6631L47.8101 79.1957H49.3238L51.4111 84.207L53.4984 79.1957H55.0121L52.1502 85.8745Z"
+              fill="#4E626D" />
+            <path
+              d="M62.5425 85.8745H61.15V85.109C60.5439 85.7469 59.7397 86.0644 58.7404 86.0644C57.8387 86.0644 57.0641 85.735 56.4166 85.0763C55.7692 84.4177 55.4469 83.5721 55.4469 82.5425C55.4469 81.5218 55.7721 80.6792 56.4255 80.0146C57.0759 79.3499 57.8476 79.0206 58.7404 79.0206C59.7397 79.0206 60.5439 79.3381 61.15 79.976V79.2105H62.5425V85.8745ZM60.4936 84.1862C60.9312 83.7619 61.15 83.213 61.15 82.5395C61.15 81.866 60.9312 81.3171 60.4936 80.8928C60.0561 80.4685 59.5475 80.2549 58.9681 80.2549C58.3443 80.2549 57.8269 80.4626 57.4159 80.878C57.005 81.2963 56.801 81.8482 56.801 82.5365C56.801 83.2249 57.0079 83.7797 57.4159 84.1951C57.8269 84.6105 58.3443 84.8212 58.9681 84.8212C59.5475 84.8241 60.0561 84.6135 60.4936 84.1862Z"
+              fill="#4E626D" />
+            <path
+              d="M69.0757 85.5511C68.5051 85.8923 67.9552 86.0614 67.429 86.0614C66.6869 86.0614 66.1045 85.8537 65.6758 85.4383C65.2471 85.02 65.0342 84.4087 65.0342 83.6047V80.3676H63.6003V79.2134H65.0342V77.1424H66.4267V79.2134H68.7032V80.3676H66.4267V83.5127C66.4267 83.9162 66.5243 84.2218 66.7224 84.4325C66.9205 84.6431 67.1865 84.747 67.5265 84.747C67.9109 84.747 68.2863 84.6253 68.65 84.385L69.0757 85.5511Z"
+              fill="#4E626D" />
+            <path
+              d="M71.6331 76.5876C71.8045 76.7568 71.8873 76.9644 71.8873 77.2048C71.8873 77.457 71.8045 77.6617 71.639 77.8219C71.4734 77.9821 71.2605 78.0652 71.0033 78.0652C70.7432 78.0652 70.5303 77.9851 70.3588 77.8219C70.1903 77.6617 70.1046 77.454 70.1046 77.2048C70.1046 76.9615 70.1903 76.7568 70.3588 76.5876C70.5273 76.4185 70.7432 76.3325 71.0033 76.3325C71.2546 76.3325 71.4645 76.4185 71.6331 76.5876ZM70.3086 85.8745V79.2105H71.7011V85.8745H70.3086Z"
+              fill="#4E626D" />
+            <path
+              d="M79.4329 80.0354C80.1159 80.6851 80.4559 81.5219 80.4559 82.5425C80.4559 83.5632 80.1129 84.3999 79.4241 85.0556C78.7352 85.7084 77.8985 86.0377 76.9051 86.0377C75.9059 86.0377 75.0603 85.7113 74.3685 85.0556C73.6767 84.3999 73.3307 83.5632 73.3307 82.5425C73.3307 81.5219 73.6767 80.6851 74.3685 80.0354C75.0603 79.3856 75.9059 79.0622 76.9051 79.0622C77.9074 79.0622 78.75 79.3856 79.4329 80.0354ZM78.4484 84.1863C78.886 83.762 79.1048 83.2131 79.1048 82.5395C79.1048 81.866 78.886 81.3171 78.4484 80.8928C78.0109 80.4685 77.4994 80.2549 76.9081 80.2549C76.302 80.2549 75.7817 80.4685 75.3471 80.8928C74.9125 81.3171 74.6966 81.866 74.6966 82.5395C74.6966 83.2101 74.9125 83.759 75.3471 84.1863C75.7787 84.6135 76.2991 84.8242 76.9081 84.8242C77.4994 84.8242 78.0109 84.6135 78.4484 84.1863Z"
+              fill="#4E626D" />
+            <path
+              d="M87.6341 79.8069C88.1249 80.332 88.3703 81.0085 88.3703 81.8423V85.8745H86.9659V82.1241C86.9659 81.5782 86.8211 81.1391 86.5313 80.8068C86.2416 80.4745 85.8602 80.3083 85.3872 80.3083C84.7693 80.3083 84.2874 80.519 83.9326 80.9403C83.5778 81.3616 83.4034 81.9788 83.4034 82.7947V85.8715H82.0109V79.2075H83.4034V80.0264C83.9651 79.3529 84.7338 79.0176 85.7065 79.0176C86.5018 79.0206 87.1433 79.2817 87.6341 79.8069Z"
+              fill="#4E626D" />
+            <path d="M109 80.6287H94.1879V81.7645H109V80.6287Z" fill="#29BBEE" />
+            <path d="M14.812 80.6287H0V81.7645H14.812V80.6287Z" fill="#29BBEE" />
+          </svg>
+        </a>
+       <div class="bi-banner-headings">
+         <h1 class="bi-headline-text">
+           Providing Safe And Sustainable Hydration Across The World
+         </h1>
+         <p class="bi-banner-subheading">
+           Pure, Fresh, and Responsible Sourced
+         </p>
+         <div class="bi-banner-btns">
+           <a href="#" class="bi-banner-schedule-btn">
+             Start Appointment Scheduling
+           </a>
+           <a href="#" class="bi-banner-play-btn">
+             <span>Learn More</span>
+             <svg class="playbtnIndex" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+               <g filter="url(#filter0_b_22044_389)">
+                 <path
+                   d="M20.45 36.6667C29.6547 36.6667 37.1167 29.2048 37.1167 20C37.1167 10.7953 29.6547 3.33334 20.45 3.33334C11.2452 3.33334 3.78333 10.7953 3.78333 20C3.78333 29.2048 11.2452 36.6667 20.45 36.6667Z"
+                   fill="#D9D9D9" fill-opacity="0.16" />
+                 <path
+                   d="M20.45 36.6667C29.6547 36.6667 37.1167 29.2048 37.1167 20C37.1167 10.7953 29.6547 3.33334 20.45 3.33334C11.2452 3.33334 3.78333 10.7953 3.78333 20C3.78333 29.2048 11.2452 36.6667 20.45 36.6667Z"
+                   stroke="#161C24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+               </g>
+               <path
+                 d="M15.0667 20.3833V17.6C15.0667 14.1333 17.5167 12.7167 20.5167 14.45L22.9333 15.85L25.35 17.25C28.35 18.9833 28.35 21.8167 25.35 23.55L22.9333 24.95L20.5167 26.35C17.5167 28.0833 15.0667 26.6667 15.0667 23.2V20.3833Z"
+                 fill="#161C24" stroke="#161C24" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                 stroke-linejoin="round" />
+               <defs>
+                 <filter id="filter0_b_22044_389" x="-0.966675" y="-1.41666" width="42.8334" height="42.8333"
+                   filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                   <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                   <feGaussianBlur in="BackgroundImageFix" stdDeviation="2" />
+                   <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_22044_389" />
+                   <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_22044_389" result="shape" />
+                 </filter>
+               </defs>
+             </svg>
+           </a>
+         </div>
 
-                                    @if (Route::has('register'))
-                                        <a
-                                            href="{{ route('register') }}"
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                        >
-                                            Register
-                                        </a>
-                                    @endif
-                                @endauth
-                            </nav>
-                        @endif
-                    </header>
+       </div>
+     </div>
+     <div class="bi-banner-bottom-container">
+       <div class="container bi-banner-bottom-contents">
+         <div class="bottom-content-box">
+           <p class="bottom-text">
+             Lorem Ipsum is simply dummy text of the printing and
+             typesetting industry. Lorem Ipsum has been.
+           </p>
+           <p class="bottom-text">
+             Lorem Ipsum is simply dummy text of the printing and
+             typesetting industry. Lorem Ipsum has been.
+           </p>
+         </div>
+         <div class="bottom-social-icons">
+           <a href="#" class="social-icon">
+             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="2" viewBox="0 0 30 2" fill="none">
+               <path d="M1 1L29 1" stroke="#637381" stroke-width="2" stroke-linecap="round" />
+             </svg>
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+               <g clip-path="url(#clip0_21824_1313)">
+                 <path
+                   d="M29.1723 0H10.8276C4.85718 0 0 4.85718 0 10.8276V29.1726C0 35.1427 4.85718 39.9999 10.8276 39.9999H29.1726C35.1427 39.9999 39.9999 35.1427 39.9999 29.1726V10.8276C39.9999 4.85718 35.1427 0 29.1723 0ZM37.6549 29.1726C37.6549 33.8497 33.8497 37.6549 29.1723 37.6549H10.8276C6.15022 37.6549 2.345 33.8497 2.345 29.1726V10.8276C2.345 6.15022 6.15022 2.345 10.8276 2.345H29.1726C33.8497 2.345 37.6549 6.15022 37.6549 10.8276V29.1726Z"
+                   fill="#637381" />
+                 <path
+                   d="M19.9997 9.06301C13.9688 9.06301 9.0625 13.9693 9.0625 20.0002C9.0625 26.0311 13.9688 30.9374 19.9997 30.9374C26.0306 30.9374 30.9369 26.0311 30.9369 20.0002C30.9369 13.9693 26.0306 9.06301 19.9997 9.06301ZM19.9997 28.5924C15.2622 28.5924 11.4075 24.7381 11.4075 20.0002C11.4075 15.2627 15.2622 11.408 19.9997 11.408C24.7376 11.408 28.5919 15.2627 28.5919 20.0002C28.5919 24.7381 24.7376 28.5924 19.9997 28.5924ZM31.1984 5.17871C29.4162 5.17871 27.9666 6.62863 27.9666 8.41051C27.9666 10.1928 29.4162 11.6426 31.1984 11.6426C32.9807 11.6426 34.4305 10.1928 34.4305 8.41059C34.4305 6.6284 32.9806 5.17871 31.1984 5.17871ZM31.1984 9.29738C30.7095 9.29738 30.3116 8.89941 30.3116 8.41051C30.3116 7.92137 30.7095 7.52371 31.1984 7.52371C31.6876 7.52371 32.0855 7.92137 32.0855 8.41051C32.0855 8.89941 31.6876 9.29738 31.1984 9.29738Z"
+                   fill="#637381" />
+               </g>
+               <defs>
+                 <clipPath id="clip0_21824_1313">
+                   <rect width="40" height="40" fill="white" />
+                 </clipPath>
+               </defs>
+             </svg>
+             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="2" viewBox="0 0 30 2" fill="none">
+               <path d="M1 1L29 1" stroke="#637381" stroke-width="2" stroke-linecap="round" />
+             </svg>
+           </a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- banner section ends -->
 
-                    <main class="mt-6">
-                        <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
-                            <a
-                                href="https://laravel.com/docs"
-                                id="docs-card"
-                                class="flex flex-col items-start gap-6 overflow-hidden rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] md:row-span-3 lg:p-10 lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
-                            >
-                                <div id="screenshot-container" class="relative flex w-full flex-1 items-stretch">
-                                    <img
-                                        src="https://laravel.com/assets/img/welcome/docs-light.svg"
-                                        alt="Laravel documentation screenshot"
-                                        class="aspect-video h-full w-full flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.06)] dark:hidden"
-                                        onerror="
-                                            document.getElementById('screenshot-container').classList.add('!hidden');
-                                            document.getElementById('docs-card').classList.add('!row-span-1');
-                                            document.getElementById('docs-card-content').classList.add('!flex-row');
-                                            document.getElementById('background').classList.add('!hidden');
-                                        "
-                                    />
-                                    <img
-                                        src="https://laravel.com/assets/img/welcome/docs-dark.svg"
-                                        alt="Laravel documentation screenshot"
-                                        class="hidden aspect-video h-full w-full flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.25)] dark:block"
-                                    />
-                                    <div
-                                        class="absolute -bottom-16 -left-16 h-40 w-[calc(100%+8rem)] bg-gradient-to-b from-transparent via-white to-white dark:via-zinc-900 dark:to-zinc-900"
-                                    ></div>
-                                </div>
+ <!-- private use section starts -->
+ <div class="bi-common-section bi-home-private-use-section">
+   <svg width="250" height="438" viewBox="0 0 250 438" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path
+       d="M-64.5706 301.635C-50.3742 355.974 0.184189 405.71 71.1658 405.71C141.071 405.71 170.028 366.826 170.899 365.618C125.004 401.055 72.1909 392.44 41.7738 379.196C11.408 365.926 -34.3329 316.216 -36.8441 264.5C-39.3042 212.809 -24.4416 180.741 -24.4416 180.741C-23.0066 191.31 -16.6771 202.523 -8.16959 213.247C-8.16959 213.247 -8.14395 213.272 -8.06707 213.35C-7.8877 213.555 -7.75956 213.735 -7.58019 213.941C8.76866 234.283 32.7538 252.825 45.8995 261.851C66.1434 275.687 83.0816 298.034 72.2165 314.827C61.3771 331.62 27.3981 325.423 4.00235 296.363C2.69547 294.717 1.41421 293.071 0.235451 291.4C-22.1609 260.334 -23.0835 226.311 -23.0835 226.311C-29.2335 265.863 -11.014 299.86 5.10422 319.354C23.2468 341.238 67.0402 362.455 92.9729 345.224C118.88 327.969 121.391 298.652 108.835 274.607C96.2785 250.562 47.3601 229.808 16.0718 202.523C-15.2165 175.238 -17.6765 131.571 -17.6765 131.571C-58.2924 197.868 -78.7925 247.244 -64.5706 301.635Z"
+       fill="#161C24" fill-opacity="0.03" />
+     <path
+       d="M212.489 245.444C206.672 217.85 192.424 186.27 170.925 149.135C121.699 64.0901 72.6522 0.955688 72.6522 0.955688C72.6522 0.955688 33.8301 55.1664 18.6087 76.9483C18.3012 77.3855 18.0193 77.797 17.7118 78.2342C7.15428 93.4327 2.10609 111.769 3.3361 130.259C3.36172 130.619 5.97553 165.696 29.8838 186.578C41.287 196.505 55.9445 205.943 70.1152 215.072C94.4079 230.682 117.368 245.444 127.464 264.808C146.35 301.017 136.946 341.315 104.581 362.84C100.276 365.72 95.7661 367.881 91.0767 369.501C103.659 370.169 127.413 367.958 152.551 357.44C196.678 339.001 222.38 292.325 212.489 245.444Z"
+       fill="#161C24" fill-opacity="0.03" />
+     <path
+       d="M224.532 368.961C218.075 367.186 211.617 366.209 205.032 366.132C212.642 371.635 234.603 382.539 234.706 391.874C232.015 397.558 225.045 400.464 219.382 403.318C208.875 408.153 197.165 411.985 185.377 415.894C173.564 419.828 161.52 423.583 149.399 428.598C176.46 432.918 234.526 427.595 248.159 399.641C254.77 383.645 237.806 372.124 224.532 368.961Z"
+       fill="#161C24" fill-opacity="0.03" />
+     <path
+       d="M-72.9752 402.058C-77.9721 399.332 -86.5309 395.5 -84.814 389.354C-79.3302 378.244 -64.8263 372.51 -53.8844 366.132C-67.8757 368.086 -85.8646 371.172 -94.6797 384.468C-102.188 396.658 -89.9134 409.773 -80.0733 415.096C-50.1175 431.838 -14.8573 435.721 18.6604 437.033C37.7255 437.418 56.7906 436.313 75.5995 432.815C56.7906 429.266 38.2381 426.72 19.8136 423.789C-11.6029 418.311 -43.7369 414.634 -72.9752 402.058Z"
+       fill="#161C24" fill-opacity="0.03" />
+   </svg>
 
-                                <div class="relative flex items-center gap-6 lg:items-end">
-                                    <div id="docs-card-content" class="flex items-start gap-6 lg:flex-col">
-                                        <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-                                            <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="#FF2D20" d="M23 4a1 1 0 0 0-1.447-.894L12.224 7.77a.5.5 0 0 1-.448 0L2.447 3.106A1 1 0 0 0 1 4v13.382a1.99 1.99 0 0 0 1.105 1.79l9.448 4.728c.14.065.293.1.447.1.154-.005.306-.04.447-.105l9.453-4.724a1.99 1.99 0 0 0 1.1-1.789V4ZM3 6.023a.25.25 0 0 1 .362-.223l7.5 3.75a.251.251 0 0 1 .138.223v11.2a.25.25 0 0 1-.362.224l-7.5-3.75a.25.25 0 0 1-.138-.22V6.023Zm18 11.2a.25.25 0 0 1-.138.224l-7.5 3.75a.249.249 0 0 1-.329-.099.249.249 0 0 1-.033-.12V9.772a.251.251 0 0 1 .138-.224l7.5-3.75a.25.25 0 0 1 .362.224v11.2Z"/><path fill="#FF2D20" d="m3.55 1.893 8 4.048a1.008 1.008 0 0 0 .9 0l8-4.048a1 1 0 0 0-.9-1.785l-7.322 3.706a.506.506 0 0 1-.452 0L4.454.108a1 1 0 0 0-.9 1.785H3.55Z"/></svg>
-                                        </div>
+   <div class="container bi-conmmon-container">
+     <svg class="lines" xmlns="http://www.w3.org/2000/svg" width="1116" height="2" viewBox="0 0 1116 2" fill="none">
+       <path d="M1 1H1115" stroke="#DFE3E8" stroke-width="2" stroke-linecap="round" />
+     </svg>
+     <div class="bi-home-private-use-contents">
+       <div class="bi-common-section-content-headings">
+         <h4 class="bi-common-section-content-heading">For Private Use</h4>
+         <p class="bi-common-section-content-subheading">
+           Lorem Ipsum is simply dummy text of the printing and typesetting
+           industry.
+         </p>
+       </div>
 
-                                        <div class="pt-3 sm:pt-5 lg:pt-0">
-                                            <h2 class="text-xl font-semibold text-black dark:text-white">Documentation</h2>
-
-                                            <p class="mt-4 text-sm/relaxed">
-                                                Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <svg class="size-6 shrink-0 stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-                                </div>
-                            </a>
-
-                            <a
-                                href="https://laracasts.com"
-                                class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
-                            >
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-                                    <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g fill="#FF2D20"><path d="M24 8.25a.5.5 0 0 0-.5-.5H.5a.5.5 0 0 0-.5.5v12a2.5 2.5 0 0 0 2.5 2.5h19a2.5 2.5 0 0 0 2.5-2.5v-12Zm-7.765 5.868a1.221 1.221 0 0 1 0 2.264l-6.626 2.776A1.153 1.153 0 0 1 8 18.123v-5.746a1.151 1.151 0 0 1 1.609-1.035l6.626 2.776ZM19.564 1.677a.25.25 0 0 0-.177-.427H15.6a.106.106 0 0 0-.072.03l-4.54 4.543a.25.25 0 0 0 .177.427h3.783c.027 0 .054-.01.073-.03l4.543-4.543ZM22.071 1.318a.047.047 0 0 0-.045.013l-4.492 4.492a.249.249 0 0 0 .038.385.25.25 0 0 0 .14.042h5.784a.5.5 0 0 0 .5-.5v-2a2.5 2.5 0 0 0-1.925-2.432ZM13.014 1.677a.25.25 0 0 0-.178-.427H9.101a.106.106 0 0 0-.073.03l-4.54 4.543a.25.25 0 0 0 .177.427H8.4a.106.106 0 0 0 .073-.03l4.54-4.543ZM6.513 1.677a.25.25 0 0 0-.177-.427H2.5A2.5 2.5 0 0 0 0 3.75v2a.5.5 0 0 0 .5.5h1.4a.106.106 0 0 0 .073-.03l4.54-4.543Z"/></g></svg>
-                                </div>
-
-                                <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">Laracasts</h2>
-
-                                    <p class="mt-4 text-sm/relaxed">
-                                        Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                    </p>
-                                </div>
-
-                                <svg class="size-6 shrink-0 self-center stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-                            </a>
-
-                            <a
-                                href="https://laravel-news.com"
-                                class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
-                            >
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-                                    <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g fill="#FF2D20"><path d="M8.75 4.5H5.5c-.69 0-1.25.56-1.25 1.25v4.75c0 .69.56 1.25 1.25 1.25h3.25c.69 0 1.25-.56 1.25-1.25V5.75c0-.69-.56-1.25-1.25-1.25Z"/><path d="M24 10a3 3 0 0 0-3-3h-2V2.5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2V20a3.5 3.5 0 0 0 3.5 3.5h17A3.5 3.5 0 0 0 24 20V10ZM3.5 21.5A1.5 1.5 0 0 1 2 20V3a.5.5 0 0 1 .5-.5h14a.5.5 0 0 1 .5.5v17c0 .295.037.588.11.874a.5.5 0 0 1-.484.625L3.5 21.5ZM22 20a1.5 1.5 0 1 1-3 0V9.5a.5.5 0 0 1 .5-.5H21a1 1 0 0 1 1 1v10Z"/><path d="M12.751 6.047h2a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-2A.75.75 0 0 1 12 7.3v-.5a.75.75 0 0 1 .751-.753ZM12.751 10.047h2a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-2A.75.75 0 0 1 12 11.3v-.5a.75.75 0 0 1 .751-.753ZM4.751 14.047h10a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-10A.75.75 0 0 1 4 15.3v-.5a.75.75 0 0 1 .751-.753ZM4.75 18.047h7.5a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-7.5A.75.75 0 0 1 4 19.3v-.5a.75.75 0 0 1 .75-.753Z"/></g></svg>
-                                </div>
-
-                                <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">Laravel News</h2>
-
-                                    <p class="mt-4 text-sm/relaxed">
-                                        Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                    </p>
-                                </div>
-
-                                <svg class="size-6 shrink-0 self-center stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-                            </a>
-
-                            <div class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]">
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-                                    <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <g fill="#FF2D20">
-                                            <path
-                                                d="M16.597 12.635a.247.247 0 0 0-.08-.237 2.234 2.234 0 0 1-.769-1.68c.001-.195.03-.39.084-.578a.25.25 0 0 0-.09-.267 8.8 8.8 0 0 0-4.826-1.66.25.25 0 0 0-.268.181 2.5 2.5 0 0 1-2.4 1.824.045.045 0 0 0-.045.037 12.255 12.255 0 0 0-.093 3.86.251.251 0 0 0 .208.214c2.22.366 4.367 1.08 6.362 2.118a.252.252 0 0 0 .32-.079 10.09 10.09 0 0 0 1.597-3.733ZM13.616 17.968a.25.25 0 0 0-.063-.407A19.697 19.697 0 0 0 8.91 15.98a.25.25 0 0 0-.287.325c.151.455.334.898.548 1.328.437.827.981 1.594 1.619 2.28a.249.249 0 0 0 .32.044 29.13 29.13 0 0 0 2.506-1.99ZM6.303 14.105a.25.25 0 0 0 .265-.274 13.048 13.048 0 0 1 .205-4.045.062.062 0 0 0-.022-.07 2.5 2.5 0 0 1-.777-.982.25.25 0 0 0-.271-.149 11 11 0 0 0-5.6 2.815.255.255 0 0 0-.075.163c-.008.135-.02.27-.02.406.002.8.084 1.598.246 2.381a.25.25 0 0 0 .303.193 19.924 19.924 0 0 1 5.746-.438ZM9.228 20.914a.25.25 0 0 0 .1-.393 11.53 11.53 0 0 1-1.5-2.22 12.238 12.238 0 0 1-.91-2.465.248.248 0 0 0-.22-.187 18.876 18.876 0 0 0-5.69.33.249.249 0 0 0-.179.336c.838 2.142 2.272 4 4.132 5.353a.254.254 0 0 0 .15.048c1.41-.01 2.807-.282 4.117-.802ZM18.93 12.957l-.005-.008a.25.25 0 0 0-.268-.082 2.21 2.21 0 0 1-.41.081.25.25 0 0 0-.217.2c-.582 2.66-2.127 5.35-5.75 7.843a.248.248 0 0 0-.09.299.25.25 0 0 0 .065.091 28.703 28.703 0 0 0 2.662 2.12.246.246 0 0 0 .209.037c2.579-.701 4.85-2.242 6.456-4.378a.25.25 0 0 0 .048-.189 13.51 13.51 0 0 0-2.7-6.014ZM5.702 7.058a.254.254 0 0 0 .2-.165A2.488 2.488 0 0 1 7.98 5.245a.093.093 0 0 0 .078-.062 19.734 19.734 0 0 1 3.055-4.74.25.25 0 0 0-.21-.41 12.009 12.009 0 0 0-10.4 8.558.25.25 0 0 0 .373.281 12.912 12.912 0 0 1 4.826-1.814ZM10.773 22.052a.25.25 0 0 0-.28-.046c-.758.356-1.55.635-2.365.833a.25.25 0 0 0-.022.48c1.252.43 2.568.65 3.893.65.1 0 .2 0 .3-.008a.25.25 0 0 0 .147-.444c-.526-.424-1.1-.917-1.673-1.465ZM18.744 8.436a.249.249 0 0 0 .15.228 2.246 2.246 0 0 1 1.352 2.054c0 .337-.08.67-.23.972a.25.25 0 0 0 .042.28l.007.009a15.016 15.016 0 0 1 2.52 4.6.25.25 0 0 0 .37.132.25.25 0 0 0 .096-.114c.623-1.464.944-3.039.945-4.63a12.005 12.005 0 0 0-5.78-10.258.25.25 0 0 0-.373.274c.547 2.109.85 4.274.901 6.453ZM9.61 5.38a.25.25 0 0 0 .08.31c.34.24.616.561.8.935a.25.25 0 0 0 .3.127.631.631 0 0 1 .206-.034c2.054.078 4.036.772 5.69 1.991a.251.251 0 0 0 .267.024c.046-.024.093-.047.141-.067a.25.25 0 0 0 .151-.23A29.98 29.98 0 0 0 15.957.764a.25.25 0 0 0-.16-.164 11.924 11.924 0 0 0-2.21-.518.252.252 0 0 0-.215.076A22.456 22.456 0 0 0 9.61 5.38Z"
-                                            />
-                                        </g>
-                                    </svg>
-                                </div>
-
-                                <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">Vibrant Ecosystem</h2>
-
-                                    <p class="mt-4 text-sm/relaxed">
-                                        Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white dark:focus-visible:ring-[#FF2D20]">Forge</a>, <a href="https://vapor.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Vapor</a>, <a href="https://nova.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Nova</a>, <a href="https://envoyer.io" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Envoyer</a>, and <a href="https://herd.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Herd</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Echo</a>, <a href="https://laravel.com/docs/horizon" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20] dark:hover:text-white">Telescope</a>, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-
-                    <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </footer>
+       <div class="common-card-gallery">
+         <!-- card -->
+          <a href="shop.html">
+            <div class="bi-common-card">
+              <img src="assets/images/private-use-1.png" alt="" srcset="" class="bi-common-card-img" />
+              <div class="bi-common-card-bottom">
+                <div class="bi-common-card-info">
+                  <span class="bi-common-card-name">
+                    Artesia 24 Naturpur Premium
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
                 </div>
+              </div>
             </div>
-        </div>
-    </body>
-</html>
+          </a>
+         <!-- card -->
+          <a href="shop.html">
+            <div class="bi-common-card">
+              <img src="assets/images/private-use-2.png" alt="" srcset="" class="bi-common-card-img" />
+              <div class="bi-common-card-bottom">
+                <div class="bi-common-card-info">
+                  <span class="bi-common-card-name">
+                    Artesia 24 Naturpur Premium
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+         <!-- card -->
+          <a href="shop.html">
+            <div class="bi-common-card">
+              <img src="assets/images/private-use-3.png" alt="" srcset="" class="bi-common-card-img" />
+              <div class="bi-common-card-bottom">
+                <div class="bi-common-card-info">
+                  <span class="bi-common-card-name">
+                    Artesia 24 Naturpur Premium
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+         <!-- card -->
+          <a href="shop.html">
+            <div class="bi-common-card">
+              <img src="assets/images/private-use-4.png" alt="" srcset="" class="bi-common-card-img" />
+              <div class="bi-common-card-bottom">
+                <div class="bi-common-card-info">
+                  <span class="bi-common-card-name">
+                    Artesia 24 Naturpur Premium
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+         <!-- card  -->
+          <a href="shop.html">
+            <div class="bi-common-card">
+              <img src="assets/images/private-use-5.png" alt="" srcset="" class="bi-common-card-img" />
+              <div class="bi-common-card-bottom">
+                <div class="bi-common-card-info">
+                  <span class="bi-common-card-name">
+                    Artesia 24 Naturpur Premium
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+         <!-- card  -->
+          <a href="shop.html">
+            <div class="bi-common-card">
+              <img src="assets/images/private-use-6.png" alt="" srcset="" class="bi-common-card-img" />
+              <div class="bi-common-card-bottom">
+                <div class="bi-common-card-info">
+                  <span class="bi-common-card-name">
+                    Artesia 24 Naturpur Premium
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+       </div>
+     </div>
+     <svg class="lines" xmlns="http://www.w3.org/2000/svg" width="1116" height="2" viewBox="0 0 1116 2" fill="none">
+       <path d="M1 1H1115" stroke="#DFE3E8" stroke-width="2" stroke-linecap="round" />
+     </svg>
+   </div>
+ </div>
+ <!-- private use section ends -->
+
+ <!-- property management section starts -->
+ <div class="bi-common-section bi-home-property-section">
+   <svg width="240" height="437" viewBox="0 0 240 437" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path
+       d="M32.4294 301.144C46.6257 355.483 97.1842 405.219 168.166 405.219C238.071 405.219 267.028 366.336 267.899 365.127C222.004 400.565 169.191 391.949 138.774 378.705C108.408 365.436 62.6671 315.725 60.1558 264.009C57.6958 212.319 72.5584 180.25 72.5584 180.25C73.9934 190.82 80.3228 202.032 88.8304 212.756C88.8304 212.756 88.856 212.782 88.9329 212.859C89.1123 213.065 89.2404 213.244 89.4198 213.45C105.769 233.792 129.754 252.334 142.899 261.36C163.143 275.196 180.082 297.544 169.216 314.337C158.377 331.13 124.398 324.932 101.002 295.872C99.6955 294.226 98.4142 292.58 97.2354 290.909C74.8391 259.843 73.9165 225.82 73.9165 225.82C67.7665 265.372 85.986 299.37 102.104 318.863C120.247 340.748 164.04 361.964 189.973 344.734C215.88 327.478 218.391 298.161 205.835 274.116C193.279 250.071 144.36 229.317 113.072 202.032C81.7835 174.747 79.3235 131.08 79.3235 131.08C38.7076 197.377 18.2075 246.753 32.4294 301.144Z"
+       fill="#161C24" fill-opacity="0.03" />
+     <path
+       d="M309.489 244.953C303.672 217.359 289.424 185.779 267.925 148.644C218.699 63.5992 169.652 0.464844 169.652 0.464844C169.652 0.464844 130.83 54.6755 115.609 76.4575C115.301 76.8947 115.019 77.3062 114.712 77.7433C104.154 92.9419 99.1061 111.278 100.336 129.768C100.362 130.128 102.976 165.206 126.884 186.088C138.287 196.014 152.945 205.452 167.115 214.582C191.408 230.192 214.368 244.953 224.464 264.318C243.35 300.527 233.946 340.825 201.581 362.349C197.276 365.23 192.766 367.39 188.077 369.01C200.659 369.679 224.413 367.467 249.551 356.949C293.678 338.51 319.38 291.834 309.489 244.953Z"
+       fill="#161C24" fill-opacity="0.03" />
+     <path
+       d="M24.0249 401.567C19.028 398.841 10.4692 395.01 12.1861 388.863C17.6699 377.754 32.1737 372.019 43.1156 365.641C29.1243 367.596 11.1354 370.682 2.32038 383.977C-5.18779 396.167 7.08668 409.282 16.9267 414.606C46.8825 431.347 82.1427 435.23 115.66 436.542C134.726 436.928 153.791 435.822 172.6 432.324C153.791 428.775 135.238 426.229 116.814 423.298C85.3972 417.82 53.2632 414.143 24.0249 401.567Z"
+       fill="#161C24" fill-opacity="0.03" />
+   </svg>
+   <div class="container bi-conmmon-container">
+     <div class="bi-home-private-use-contents">
+       <div class="bi-common-section-content-headings">
+         <h4 class="bi-common-section-content-heading">
+           For Entire Buildings And Property Management
+         </h4>
+         <p class="bi-common-section-content-subheading">
+           Lorem Ipsum is simply dummy text of the printing and typesetting
+           industry.
+         </p>
+       </div>
+
+       <div class="common-card-gallery">
+          <!-- card -->
+         <div class="bi-common-card">
+           <img src="assets/images/property-1.png" alt="" srcset="" class="bi-common-card-img" />
+           <div class="bi-common-card-bottom">
+             <div class="bi-common-card-info">
+               <span class="bi-common-card-name"> AquaSpin </span>
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                 <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" />
+                 <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" />
+               </svg>
+             </div>
+           </div>
+         </div>
+         <!-- card  -->
+         <div class="bi-common-card">
+           <img src="assets/images/property-2.png" alt="" srcset="" class="bi-common-card-img" />
+           <div class="bi-common-card-bottom">
+             <div class="bi-common-card-info">
+               <span class="bi-common-card-name"> Hydroxil </span>
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                 <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" />
+                 <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" />
+               </svg>
+             </div>
+           </div>
+         </div>
+         <!-- card  -->
+         <div class="bi-common-card">
+           <img src="assets/images/property-3.png" alt="" srcset="" class="bi-common-card-img" />
+           <div class="bi-common-card-bottom">
+             <div class="bi-common-card-info">
+               <span class="bi-common-card-name">
+                 Stratos Water Softening System
+               </span>
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                 <path d="M17.5538 6.42266L2.14431 21.8321" stroke="#02CC78" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round" />
+                 <path d="M9.01675 6.44003L17.5544 6.42165L17.5367 14.96" stroke="#02CC78" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" />
+               </svg>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <svg xmlns="http://www.w3.org/2000/svg" class="lines" width="1116" height="2" viewBox="0 0 1116 2" fill="none">
+       <path d="M1 1H1115" stroke="#DFE3E8" stroke-width="2" stroke-linecap="round" />
+     </svg>
+   </div>
+ </div> 
+ <!-- property management section ends -->
+
+ <!-- clean water fabrications technologies section starts -->
+ <div class="bi-home-fabrications-section">
+   <div class="container bi-home-fabrications-container">
+     <div class="bi-common-section-content-headings">
+       <h4 class="bi-common-section-content-heading">
+         For Entire Buildings And Property Management
+       </h4>
+       <p class="bi-common-section-content-subheading">
+         Lorem Ipsum is simply dummy text of the printing and typesetting
+         industry.
+       </p>
+     </div>
+   </div>
+   <div class="febrication-background">
+     <a href="https://www.youtube.com/watch?v=VIDEO_ID" class="popup-video">
+       <span class="round round_1">
+         <span class="round round_2">
+           <span class="round round_3">
+             <svg xmlns="http://www.w3.org/2000/svg" width="148" height="149" viewBox="0 0 148 149" fill="none">
+               <g filter="url(#filter0_b_22096_377)">
+                 <path
+                   d="M73.815 136.583C107.873 136.583 135.482 108.788 135.482 74.5001C135.482 40.2124 107.873 12.4167 73.815 12.4167C39.7574 12.4167 12.1483 40.2124 12.1483 74.5001C12.1483 108.788 39.7574 136.583 73.815 136.583Z"
+                   fill="#D9D9D9" fill-opacity="0.16" />
+                 <path
+                   d="M73.815 136.583C107.873 136.583 135.482 108.788 135.482 74.5001C135.482 40.2124 107.873 12.4167 73.815 12.4167C39.7574 12.4167 12.1483 40.2124 12.1483 74.5001C12.1483 108.788 39.7574 136.583 73.815 136.583Z"
+                   stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+               </g>
+               <path
+                 d="M53.8966 75.9278V65.5599C53.8966 52.6466 62.9616 47.3695 74.0616 53.8261L83.0033 59.0411L91.9449 64.2561C103.045 70.7128 103.045 81.267 91.9449 87.7236L83.0033 92.9386L74.0616 98.1536C62.9616 104.61 53.8966 99.3332 53.8966 86.4199V75.9278Z"
+                 fill="white" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                 stroke-linejoin="round" />
+               <defs>
+                 <filter id="filter0_b_22096_377" x="7.39832" y="7.66675" width="132.833" height="133.667"
+                   filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                   <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                   <feGaussianBlur in="BackgroundImageFix" stdDeviation="2" />
+                   <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_22096_377" />
+                   <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_22096_377" result="shape" />
+                 </filter>
+               </defs>
+             </svg>
+           </span>
+         </span>
+       </span>
+     </a>
+   </div>
+ </div>
+ <!-- clean water fabrications technologies section starts -->
+
+ <!-- clean water fabrications technologies info starts  -->
+ <div class="bi-common-section">
+   <div class="container clean-water-fabrications-infos">
+     <svg class="lines" xmlns="http://www.w3.org/2000/svg" width="1116" height="2" viewBox="0 0 1116 2" fill="none">
+       <path d="M1 1H1115" stroke="#DFE3E8" stroke-width="2" stroke-linecap="round" />
+     </svg>
+
+     <div class="bi-febrication-information">
+       <p class="bi-febrication-information-para-text">
+         Lorem Ipsum is simply dummy text of the printing and typesetting
+         industry. Lorem Ipsum has been the industry's standard dummy text
+         ever since the 1500s, when an unknown printer took a galley of
+         type and scrambled it to make a type specimen book. It has
+         survived not only five centuries, but also the leap into
+         electronic typesetting, remaining essentially unchanged. It was
+         popularised in the 1960s with the release of Letraset sheets
+         containing Lorem Ipsum passages, and more recently with desktop
+         publishing software like Aldus PageMaker including versions of
+         Lorem Ipsum.
+       </p>
+       <ul class="bi-febrication-lists">
+         <li class="bi-febrication-list">
+           <svg class="rightTik" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+             <path
+               d="M7.95695 23.5L7.81943 23.2628C5.71887 19.6402 0.136905 11.9524 0.0805213 11.8752L0 11.7645L1.90175 9.86211L7.92164 14.1169C11.7119 9.13846 15.248 5.71901 17.5546 3.72219C20.0777 1.53786 21.7202 0.532266 21.7368 0.52263L21.7741 0.5H25L24.6919 0.777774C16.7669 7.92267 8.17708 23.1085 8.09152 23.261L7.95695 23.5Z"
+               fill="#02CC78" />
+           </svg>
+           <span>Lorem Ipsum is simply dummy text of the printing and
+             typesetting industry.</span>
+         </li>
+         <li class="bi-febrication-list">
+           <svg class="rightTik" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+             <path
+               d="M7.95695 23.5L7.81943 23.2628C5.71887 19.6402 0.136905 11.9524 0.0805213 11.8752L0 11.7645L1.90175 9.86211L7.92164 14.1169C11.7119 9.13846 15.248 5.71901 17.5546 3.72219C20.0777 1.53786 21.7202 0.532266 21.7368 0.52263L21.7741 0.5H25L24.6919 0.777774C16.7669 7.92267 8.17708 23.1085 8.09152 23.261L7.95695 23.5Z"
+               fill="#02CC78" />
+           </svg>
+           <span>when an unknown printer took a galley of type and scrambled
+             it to make a type specimen book.</span>
+         </li>
+         <li class="bi-febrication-list">
+           <svg class="rightTik" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+             <path
+               d="M7.95695 23.5L7.81943 23.2628C5.71887 19.6402 0.136905 11.9524 0.0805213 11.8752L0 11.7645L1.90175 9.86211L7.92164 14.1169C11.7119 9.13846 15.248 5.71901 17.5546 3.72219C20.0777 1.53786 21.7202 0.532266 21.7368 0.52263L21.7741 0.5H25L24.6919 0.777774C16.7669 7.92267 8.17708 23.1085 8.09152 23.261L7.95695 23.5Z"
+               fill="#02CC78" />
+           </svg>
+           <span>It has survived not only five centuries, but also the leap
+             into electronic typesetting, remaining essentially
+             unchanged.</span>
+         </li>
+         <li class="bi-febrication-list">
+           <svg class="rightTik" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+             <path
+               d="M7.95695 23.5L7.81943 23.2628C5.71887 19.6402 0.136905 11.9524 0.0805213 11.8752L0 11.7645L1.90175 9.86211L7.92164 14.1169C11.7119 9.13846 15.248 5.71901 17.5546 3.72219C20.0777 1.53786 21.7202 0.532266 21.7368 0.52263L21.7741 0.5H25L24.6919 0.777774C16.7669 7.92267 8.17708 23.1085 8.09152 23.261L7.95695 23.5Z"
+               fill="#02CC78" />
+           </svg>
+           <span>It was popularised in the 1960s with the release of Letraset
+             sheets containing. Lorem Ipsum passages, and more recently
+             with desktop publishing software like.</span>
+         </li>
+       </ul>
+     </div>
+
+     <svg class="lines" xmlns="http://www.w3.org/2000/svg" width="1116" height="2" viewBox="0 0 1116 2" fill="none">
+       <path d="M1 1H1115" stroke="#DFE3E8" stroke-width="2" stroke-linecap="round" />
+     </svg>
+   </div>
+ </div>
+ <!-- clean water fabrications technologies info starts  -->
+
+
+
+@endsection

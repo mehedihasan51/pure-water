@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('firstName');
-            $table->string('lastName')->nullable();
+            $table->string('userName');
+            $table->string('fullName')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number')->nullable()->unique();
@@ -22,6 +22,9 @@ return new class extends Migration
 
             $table->string('avatar')->nullable();
             $table->string('cover_photo')->nullable();
+            
+            $table->string('google_id')->nullable()->unique();
+            $table->string('facebook_id')->nullable()->unique();
 
             $table->enum('role', ['admin', 'user'])->default('user')->nullable(false);
             $table->enum('status', ['active', 'inactive'])->default('active');

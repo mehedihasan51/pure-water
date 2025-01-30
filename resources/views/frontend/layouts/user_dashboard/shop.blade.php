@@ -1,6 +1,7 @@
 
 @extends('frontend.user_dashboard')
-@section('title','Shop ')
+@section('title','Shop')
+
 @section('content')
 
 <div class="bi-home-banner-section newShop">
@@ -127,7 +128,7 @@
                 <!-- card -->
                 <a href="product-details.html">
                     <div class="bi-common-card">
-                        <img src="assets/images/private-use-2.png" alt="" srcset=""
+                        <img src="{{asset('frontend/pure-water/assets/images/private-use-2.png')}}" alt="" srcset=""
                             class="bi-common-card-img" />
                         <div class="bi-common-card-bottom">
                             <div class="bi-common-card-info">
@@ -148,7 +149,7 @@
                 <!-- card -->
                 <a href="product-details.html">
                     <div class="bi-common-card">
-                        <img src="assets/images/shopItem2.png" alt="" srcset="" class="bi-common-card-img" />
+                        <img src="{{asset('frontend/pure-water/assets/images/shopItem2.png')}}" alt="" srcset="" class="bi-common-card-img" />
                         <div class="bi-common-card-bottom">
                             <div class="bi-common-card-info">
                                 <span class="bi-common-card-name">
@@ -168,7 +169,7 @@
                 <!-- card -->
                 <a href="product-details.html">
                     <div class="bi-common-card">
-                        <img src="assets/images/private-use-5.png" alt="" srcset=""
+                        <img src="{{asset('frontend/pure-water/assets/images/private-use-5.png')}}" alt="" srcset=""
                             class="bi-common-card-img" />
                         <div class="bi-common-card-bottom">
                             <div class="bi-common-card-info">
@@ -189,7 +190,7 @@
                 <!-- card -->
                 <a href="product-details.html">
                     <div class="bi-common-card">
-                        <img src="assets/images/private-use-4.png" alt="" srcset=""
+                        <img src="{{asset('frontend/pure-water/assets/images/private-use-4.png')}}" alt="" srcset=""
                             class="bi-common-card-img" />
                         <div class="bi-common-card-bottom">
                             <div class="bi-common-card-info">
@@ -210,7 +211,7 @@
                 <!-- card  -->
                 <a href="product-details.html">
                     <div class="bi-common-card">
-                        <img src="assets/images/private-use-3.png" alt="" srcset=""
+                        <img src="{{asset('frontend/pure-water/assets/images/private-use-3.png')}}" alt="" srcset=""
                             class="bi-common-card-img" />
                         <div class="bi-common-card-bottom">
                             <div class="bi-common-card-info">
@@ -231,7 +232,7 @@
                 <!-- card  -->
                 <a href="product-details.html">
                     <div class="bi-common-card">
-                        <img src="assets/images/private-use-6.png" alt="" srcset=""
+                        <img src="{{asset('frontend/pure-water/assets/images/private-use-6.png')}}" alt="" srcset=""
                             class="bi-common-card-img" />
                         <div class="bi-common-card-bottom">
                             <div class="bi-common-card-info">
@@ -286,7 +287,7 @@
             <div class="common-card-gallery">
                 <!-- card -->
                 <div class="bi-common-card">
-                    <img src="assets/images/property-1.png" alt="" srcset="" class="bi-common-card-img" />
+                    <img src="{{asset('frontend/pure-water/assets/images/property-1.png')}}" alt="" srcset="" class="bi-common-card-img" />
                     <div class="bi-common-card-bottom">
                         <div class="bi-common-card-info">
                             <span class="bi-common-card-name"> AquaSpin </span>
@@ -302,7 +303,7 @@
                 </div>
                 <!-- card  -->
                 <div class="bi-common-card">
-                    <img src="assets/images/property-2.png" alt="" srcset="" class="bi-common-card-img" />
+                    <img src="{{asset('frontend/pure-water/assets/images/property-2.png')}}" alt="" srcset="" class="bi-common-card-img" />
                     <div class="bi-common-card-bottom">
                         <div class="bi-common-card-info">
                             <span class="bi-common-card-name"> Hydroxil </span>
@@ -318,7 +319,7 @@
                 </div>
                 <!-- card  -->
                 <div class="bi-common-card">
-                    <img src="assets/images/property-3.png" alt="" srcset="" class="bi-common-card-img" />
+                    <img src="{{asset('frontend/pure-water/assets/images/property-3.png')}}" alt="" srcset="" class="bi-common-card-img" />
                     <div class="bi-common-card-bottom">
                         <div class="bi-common-card-info">
                             <span class="bi-common-card-name">
@@ -356,7 +357,7 @@
                 <!-- card -->
                 <a href="#">
                     <div class="bi-common-card">
-                        <img src="assets/images/blue-water-splashed1.png" alt="" srcset=""
+                        <img src="{{asset('frontend/pure-water/assets/images/blue-water-splashed1.png')}}" alt="" srcset=""
                             class="bi-common-card-img" />
                         <div class="bi-common-card-bottom">
                             <div class="bi-common-card-info">

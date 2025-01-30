@@ -1,3 +1,8 @@
+
+
+
+
+
 <header class="common-top-header">
   <div class="bi-header-routes">
     <a class="bi-route {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>

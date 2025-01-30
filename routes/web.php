@@ -1,21 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Frontend\HomeController;
+use App\Http\Controllers\Web\Auth\UserloginController;
 use App\Http\Controllers\Web\Frontend\AboutController;
 use App\Http\Controllers\Web\Frontend\ContactController;
-use App\Http\Controllers\Web\Frontend\HomeController;
-use App\Http\Controllers\Web\Frontend\User_Dashboard\PartnerController;
-use App\Http\Controllers\Web\Frontend\User_Dashboard\PaymentController;
-use App\Http\Controllers\Web\Frontend\User_Dashboard\ProductController;
 use App\Http\Controllers\Web\Frontend\User_Dashboard\ShopController;
 use App\Http\Controllers\Web\Frontend\User_Dashboard\ProfileController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
+// Route::get('/dashboard', [DashboardController::class, 'index'])->name('user-dashboard');
 
-Route::get('/user-dashboard', function () {
+
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('user-dashboard');
 
@@ -25,21 +25,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('/user-page', [ProfileController::class, 'userPage'])->name('user-page')->middleware(['auth', 'verified']);
+// after authtation route
 
-//~ Route for Non Authenticate and Web Pages
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-// Contact stour route
-Route::post('/contact', [ContactController::class, 'store'])->name('store');
+Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::get('/about', [AboutController::class,'index'])->name('about');
+Route::get('/contact', [ContactController::class,'index'])->name('contact');
 
-//# Route for User Dashboard page
-Route::get('/shop-page',[ShopController::class,'index'])->name('user.shop-page');
-Route::get('/product-details-page',[ProductController::class,'index'])->name('user.product-details-page');
-Route::get('/payment-page',[PaymentController::class,'index'])->name('user.payment-page');
-Route::get('/profile-page',[ProfileController::class,'index'])->name('user.profile-page');
-Route::get('/partner-page',[PartnerController::class,'index'])->name('user.partner-page');
+
+// before authation route
+// page route
+Route::get('/profile',[ProfileController::class,'index'])->name('user.profile');
+Route::post('/login/check', [UserloginController::class, 'userCheck'])->name('user.login');
+Route::post('/login/logout', [UserloginController::class, 'destroy'])->name('user.logout');
+Route::get('/shop', [ShopController::class, 'index'])->middleware(['auth', 'verified'])->name('user.shop');
+    
+    
+
+
 
 
 require __DIR__.'/auth.php';

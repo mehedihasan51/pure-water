@@ -114,67 +114,93 @@
             </div>
 
             <div class="nr--contractUs--left--form">
-              <form action="{{route('store')}}" method="post" >
+              @if(session('success'))
+              <div class="alert alert-success">{{ session('success') }}</div>
+              @endif
+              <form action="{{route('contact.store')}}" method="POST" enctype="multipart/form-data" >
                 @csrf
 
                 <div class="nr--forms--wrapper">
                   <div class="nr--names--wrapper">
                     <div class="nr--names--first">
                       <label class="lebel--names--style" for="firstName">First Name *</label>
-                      <input class="inputBoxfirst" id="firstName" name="firstName" type="text" placeholder="Enter Your First Name" />
+                      <input class="inputBoxfirst @error('firstName') is-invalid @enderror" id="firstName" name="firstName" type="text" placeholder="Enter Your First Name" value="{{ old('firstName') }}" />
+                      @error('firstName')
+                        <span class="text-danger">{{ $message }}</span>
+                       @enderror
                     </div>
 
                     <div class="nr--names--first">
-                      <label class="lebel--names--style" for="secondName">Last Name*</label>
-                      <input class="inputBoxfirst" id="secondName" name="lastName" type="text" placeholder="Enter Your First Name" />
+                      <label class="lebel--names--style" for="lastName">Last Name*</label>
+                      <input class="inputBoxfirst @error('lastName') is-invalid @enderror" id="secondName" name="lastName" type="text" placeholder="Enter Your First Name" value="{{ old('lastName') }}"  />
+                      @error('lastName')
+                      <span class="text-danger">{{ $message }}</span>
+                     @enderror
                     </div>
                   </div>
 
                   <div class="nr--names--wrapper">
                     <div class="nr--names--first">
-                      <label class="lebel--names--style" for="firstName">Email Address *</label>
-                      <input class="inputBoxfirst" id="firstName" name="email" type="email" placeholder="Enter Your Email Address" />
+                      <label class="lebel--names--style" for="email">Email Address *</label>
+                      <input class="inputBoxfirst @error('email') is-invalid @enderror" id="email" name="email" type="email" placeholder="Enter Your Email Address" value="{{ old('email') }}" />
+                      @error('email')
+                      <span class="text-danger">{{ $message }}</span>
+                     @enderror
                     </div>
 
                     <div class="nr--names--first">
-                      <label class="lebel--names--style" for="secondName">Phone Number *</label>
-                      <input class="inputBoxfirst" id="secondName" name="phone" type="number"
-                        placeholder="Enter Your Phone Number" />
+                      <label class="lebel--names--style" for="phone">Phone Number *</label>
+                      <input class="inputBoxfirst @error('phone') is-invalid @enderror" id="phone" name="phone" type="number"
+                        placeholder="Enter Your Phone Number" value="{{ old('phone') }}" />
+                        @error('phone')
+                      <span class="text-danger">{{ $message }}</span>
+                     @enderror
                     </div>
                   </div>
 
                   <div class="nr--names--wrapper">
                     <div class="nr--names--first">
                       <label class="lebel--names--style" for="city">City *</label>
-                      <input class="inputBoxfirst" id="city" name="city" type="email" placeholder="Enter Your Email Address" />
+                      <input class="inputBoxfirst" id="city" name="city" type="text" placeholder="Enter Your Email Address" value="{{old('city')}}" />
+                      @error('city')
+                      <span class="text-danger">{{ $message }}</span>
+                     @enderror
                     </div>
 
-                    {{-- <div class="nr--names--first">
+                     <div class="nr--names--first">
                       <label class="lebel--names--style" for="postalCode">Postal Code *</label>
-                      <input class="inputBoxfirst" id="postalCode" name="postal_code" type="text" placeholder="Enter Your Postal Code" />
+                      <input class="inputBoxfirst" id="postalCode" name="postal_code" type="text" placeholder="Enter Your Postal Code" value="{{old('postal_code')}}" />
+                      @error('postal_code')
+                      <span class="text-danger">{{ $message }}</span>
+                     @enderror
                     </div>
                   </div>
 
                   <div class="nr--home--wrapper">
                     <div class="nr--address--first">
-                      <label class="lebel--names--style" for="postalCode">House Address *</label>
-                      <input class="inputBoxFull" id="postalCode" name="house_address" type="text" placeholder="Enter Your House Address" />
+                      <label class="lebel--names--style" for="house_address">House Address *</label>
+                      <input class="inputBoxFull" id="house_address" name="house_address" type="text" placeholder="Enter Your House Address" value="{{old('house_address')}}" />
+                      @error('house_address')
+                      <span class="text-danger">{{ $message }}</span>
+                     @enderror
                     </div>
                   </div>
 
                   <div class="nr--home--wrapper">
                     <div class="nr--address--first">
-                      <label class="lebel--names--style" for="postalCode">Are You A... *</label>
-                      <select class="customNiceSelect" name="select" id="area">
-                        <option data-display="Select" value="area">
-                          Select One Option
-                        </option>
-                        <option value="two">Select Two</option>
-                        <option value="three">Select Three</option>
-                        <option value="four">Select Four</option>
-                      </select>
+                        <label class="lebel--names--style" for="postalCode">Are You A... *</label>
+                        <select class="customNiceSelect" name="option[]" id="area">
+                            <option value="" disabled selected>Select One Option</option>
+                            <option value="two" {{ in_array('two', old('option', [])) ? 'selected' : '' }}>Select Two</option>
+                            <option value="three" {{ in_array('three', old('option', [])) ? 'selected' : '' }}>Select Three</option>
+                            <option value="four" {{ in_array('four', old('option', [])) ? 'selected' : '' }}>Select Four</option>
+                        </select>
+                        
+                        @error('option')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                  </div>
+                </div>
 
                   <div class="nr--intrestCheckbox--wrapper">
                     <h4 class="lebel--names--style">
@@ -183,16 +209,20 @@
 
                     <div class="nr--input--intrestCheckbox">
                       <div class="nr--input--firstCheckboxs">
-                        <input class="checkBoxInput" type="checkbox" id="sanetery" name="interested_in[]" value="stationary solutions" />
+                        <input class="checkBoxInput" type="checkbox" id="sanetery" name="interested_in[]" value="Stationary Solutions" {{ in_array('Stationary Solutions', old('interested_in', [])) ? 'checked' : '' }}  />
                         <label class="checkboxStyle" for="sanetery">
                           Stationary Solutions</label>
                       </div>
                       <div class="nr--input--firstCheckboxs">
-                        <input class="checkBoxInput" type="checkbox" id="sanetery2" name="interested_in[]" value="solutions building" />
+                        <input class="checkBoxInput" type="checkbox" id="sanetery2" name="interested_in[]" value="Solutions For The Entire Building" {{ in_array('Solutions For The Entire Building', old('interested_in', [])) ? 'checked' : '' }}  />
                         <label class="checkboxStyle" for="sanetery2">
                           Solutions For The Entire Building</label>
                       </div>
                     </div>
+                    @error('interested_in')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+
                   </div>
 
                   <div class="nr--intrestCheckbox--wrapper">
@@ -202,83 +232,83 @@
 
                     <div class="nr--input--intrestCheckbox">
                       <div class="nr--input--firstCheckboxs">
-                        <input class="checkBoxInput" type="checkbox" id="sanetery3" name="problems[]" value="limescale"/>
-                        @error('name')
-                        <span class="text-danger">{{ $message }}</span>
-                         @enderror
+                        <input class="checkBoxInput" type="checkbox" id="sanetery3" name="problems[]" value="limescale" {{ in_array('limescale', old('problems', [])) ? 'checked' : '' }}  />
                         <label class="checkboxStyle" for="sanetery3">
                           Limescale</label>
                       </div>
                       <div class="nr--input--firstCheckboxs">
-                        <input class="checkBoxInput" type="checkbox" id="sanetery4" name="problems[]" value="legionella" />
+                        <input class="checkBoxInput" type="checkbox" id="sanetery4" name="problems[]" value="legionella" {{ in_array('legionella', old('problems', [])) ? 'checked' : '' }} />
                         <label class="checkboxStyle" for="sanetery4">
                           Legionella</label>
                       </div>
                       <div class="nr--input--firstCheckboxs">
-                        <input class="checkBoxInput" type="checkbox" id="vehicle3" name="problems[]" value="dirty tap water" />
+                        <input class="checkBoxInput" type="checkbox" id="vehicle3" name="problems[]" value="dirty tap water" {{ in_array('dirty tap water', old('problems', [])) ? 'checked' : '' }} />
                         <label class="checkboxStyle" for="vehicle3">
                           Dirty Tap Water</label>
                       </div>
                       <div class="nr--input--firstCheckboxs">
-                        <input class="checkBoxInput" type="checkbox" id="vehicle4"  name="problems[]" value="water pipes" />
+                        <input class="checkBoxInput" type="checkbox" id="vehicle4"  name="problems[]" value="water pipes" {{ in_array('water pipes', old('problems', [])) ? 'checked' : '' }}/>
                         <label class="checkboxStyle" for="vehicle4">
                           Water Pipes</label>
                       </div>
                     </div>
+                    @error('problems')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+
                   </div>
 
-                  <!-- newly added -->
-                  <div class="nr--appointment--wrapper">
-                    <div class="nr--address--first date_pick">
-                      <label class="lebel--names--style" for="Appointment">Appointment Scheduling *</label>
-                   
-                      
-                        <div class="service-calender-container">
-                          <div class="calenders">
-                            <div class="calender-item">
-                              <div class="time-and-date">
-                                <div class="calender-info">
-                                  <div id="calendar-container"></div>
-                                  <input type="hidden" id="selected-date" name="selected-date" />
-                                </div>
-                                <div class="times">
-                                  <input type="hidden" name="appointment_time" value="10.00 AM" id="selected-time" name="selected-time" />
-                                  <div class="time-box">9.30 AM</div>
-                                  <div class="active time-box">10.00 AM</div>
-                                  <div class="time-box">10.30 AM</div>
-                                  <div class="time-box booked">11.00 AM</div>
-                                  <div class="time-box">11.30 AM</div>
-                                  <div class="time-box">12.00 PM</div>
-                                  <div class="time-box">12.30 PM</div>
-                                  <div class="time-box">1.00 PM</div>
-                                  <div class="time-box">1.30 PM</div>
-                                  <div class="time-box">2.00 PM</div>
-                                  <div class="time-box">2.30 PM</div>
-                                  <div class="time-box">3.00 PM</div>
-                                  <div class="time-box">3.30 PM</div>
-                                  <div class="time-box">4.00 PM</div>
-                                  <div class="time-box">4.30 PM</div>
-                                  <div class="time-box">5.00 PM</div>
-                                  <div class="time-box">5.30 PM</div>
-                                  <div class="time-box">6.00 PM</div>
-                                  <div class="time-box">6.30 PM</div>
-                                  <div class="time-box">7.00 PM</div>
-                                  <div class="time-box">7.30 PM</div>
-                                  <div class="time-box">8.00 PM</div>
-                                  <div class="time-box">8.30 PM</div>
-                                  <div class="time-box">9.00 PM</div>
-                                </div>
-                              </div>
-                            </div>
-                            
-                          </div>
-                        </div>
-                        
-                     
-                    </div>
-                  </div>
-                  <!-- newly added -->
-
+                                    <!-- newly added -->
+                                    <div class="nr--appointment--wrapper">
+                                      <div class="nr--address--first date_pick">
+                                        <label class="lebel--names--style" for="Appointment">Appointment Scheduling *</label>
+                                     
+                              
+                                          <div class="service-calender-container">
+                                            <div class="calenders">
+                                              <div class="calender-item">
+                                                <div class="time-and-date">
+                                                  <div class="calender-info">
+                                                    <div id="calendar-container"></div>
+                                                    <input type="hidden" id="calendar" name="selected-date" />
+                                                  </div>
+                                                  <div class="times">
+                                                    <input type="hidden" value="10.00 AM" id="selected-time" name="selected-time" />
+                                                    <div class="time-box">9.30 AM</div>
+                                                    <div class="active time-box">10.00 AM</div>
+                                                    <div class="time-box">10.30 AM</div>
+                                                    <div class="time-box booked">11.00 AM</div>
+                                                    <div class="time-box">11.30 AM</div>
+                                                    <div class="time-box">12.00 PM</div>
+                                                    <div class="time-box">12.30 PM</div>
+                                                    <div class="time-box">1.00 PM</div>
+                                                    <div class="time-box">1.30 PM</div>
+                                                    <div class="time-box">2.00 PM</div>
+                                                    <div class="time-box">2.30 PM</div>
+                                                    <div class="time-box">3.00 PM</div>
+                                                    <div class="time-box">3.30 PM</div>
+                                                    <div class="time-box">4.00 PM</div>
+                                                    <div class="time-box">4.30 PM</div>
+                                                    <div class="time-box">5.00 PM</div>
+                                                    <div class="time-box">5.30 PM</div>
+                                                    <div class="time-box">6.00 PM</div>
+                                                    <div class="time-box">6.30 PM</div>
+                                                    <div class="time-box">7.00 PM</div>
+                                                    <div class="time-box">7.30 PM</div>
+                                                    <div class="time-box">8.00 PM</div>
+                                                    <div class="time-box">8.30 PM</div>
+                                                    <div class="time-box">9.00 PM</div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              
+                                            </div>
+                                          </div>
+                                          
+                                       
+                                      </div>
+                                    </div>
+                                    <!-- newly added -->
 
                   <div class="nr--note--wrapper">
                     <div class="nr--address--first">
@@ -290,7 +320,7 @@
                   <div class="nr--imageUploder--wrapper">
                     <h4 class="lebel--names--style">Images</h4>
                     <div class="image--Uploader--wrapper" id="image--Uploader--wrapper">
-                      <input type="file" hidden multiple accept="image/*" id="image_upload" name="image[]"/>
+                      <input type="file" hidden multiple accept="images/*" id="image_upload" name="images[]"/>
                       <label class="nr-image-box image_upload_lable" for="image_upload" id="image_upload_lable">
                         <svg xmlns="http://www.w3.org/2000/svg" width="38" height="39" viewBox="0 0 38 39" fill="none">
                           <rect x="0.3" y="0.844434" width="37.4" height="37.4" rx="1.7" stroke="#C4CDD5"
@@ -302,7 +332,7 @@
                         <span>Drag & Drop Or, Select a File</span>
                       </label>
                     </div>
-                  </div> --}}
+                  </div> 
                 </div>
 
                 <div class="nr--imageUploder--submitBtn">
@@ -310,6 +340,8 @@
                 </div>
                 
               </form>
+
+              
 
               
 
@@ -372,6 +404,13 @@
       <div class="nr--cintract--us--frame">
         <img src="./assets/images/contractPageFrame.png" alt="not found" />
       </div>
+
+
     </section>
+
+
+
+
+
 
 @endsection

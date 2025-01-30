@@ -27,9 +27,32 @@
     <link rel="stylesheet" href="{{asset('frontend/pure-water/assets/css/custom/loginSignUp.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/pure-water/assets/css/custom/payment.css')}}">
 
-   <!-- Custom Css -->
+
+
+      <!-- All Plugins CSS -->
+
   <link rel="stylesheet" href="{{asset('frontend/pure-water/assets/css/custom/partner-details.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/pure-water/assets/css/custom/profileEditWrapper.css')}}">
+
+
+
+
+  <!-- Include EasyPICK CSS -->
+{{-- <link href="https://cdn.jsdelivr.net/npm/easy-pick-calendar@latest/dist/style.css" rel="stylesheet"> --}}
+
+
+
+<!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
+
+<!-- Custom Css -->
+
+
+
+  
+  @stack('styles')
 
 
 

@@ -15,17 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('phone');
             $table->string('city');
             $table->string('postal_code');
             $table->string('house_address');
-            $table->json('interested_in'); 
-            $table->json('problems'); // Store multiple selections
-            $table->time('appointment_time');
+            $table->json('option');
+            $table->json('interested_in');
+            $table->json('problems')->nullable();
+            
             $table->string('note');
-            $table->string('image');
-
+            $table->json('images')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->softDeletes();

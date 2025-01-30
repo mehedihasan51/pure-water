@@ -71,8 +71,15 @@
                       <a href="about.html" class="nav-link custom">Company</a>
                     </div>
                     
+                    {{-- <div class="log--out--btn">
+                        <a class="log--out--btn--profile--edit" href="{{route('user.logout')}}">Log Out</a>
+                    </div> --}}
+
                     <div class="log--out--btn">
-                        <a class="log--out--btn--profile--edit" href="#">Log Out</a>
+                        <form action="{{ route('user.logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn log--out--btn--profile--edit">Log Out</button>
+                        </form>
                     </div>
                 </div>
                 <div class="profile--navss--right">

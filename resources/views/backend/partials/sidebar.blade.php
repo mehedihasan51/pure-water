@@ -6,10 +6,10 @@
   <div class="sidebar-logo">
     <div class="logo-header" data-background-color="dark">
       <a href="{{ route('dashboard') }}" class="logo text-white">
-        <span class="logo-sm">
+        {{-- <span class="logo-sm">
             <img src="{{ asset($systemSetting->logo ?: 'frontend/images/logo.png') }}" alt="Logo"
                 style="height: 50px; width: auto;">
-        </span>
+        </span> --}}
     </a>
     
       <div class="nav-toggle">
