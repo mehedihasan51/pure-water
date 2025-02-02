@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clients_feedback', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('rating')->nullable();
-            $table->text('description')->nullable();
-            $table->string('name', 100)->nullable();
-            $table->string('title', 100)->nullable();
+            $table->string('categoryName',50);
+            $table->string('categoryImg',50);
 
+            
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients_feedback');
+        Schema::dropIfExists('categories');
     }
 };

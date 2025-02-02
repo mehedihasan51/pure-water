@@ -8,21 +8,21 @@
             <div class="product--details--left">
 
                 <div class="product--details--left--preview--img">
-                    <img src="./assets/images/product--previewItem.png" alt="not found">
+                    <img src="{{asset('frontend/pure-water/assets/images/product--previewItem.png')}}" alt="not found">
                 </div>
 
                 <div class="product--details--left--item--wrapper">
                     <div class="product--details--left--item">
-                        <img src="./assets/images/itemShow1.png" alt="not found">
+                        <img src="{{asset('frontend/pure-water/assets/images/itemShow1.png')}}" alt="not found">
                     </div>
                     <div class="product--details--left--item">
-                        <img src="./assets/images/itemShow2.png" alt="not found">
+                        <img src="{{asset('frontend/pure-water/assets/images/itemShow2.png')}}" alt="not found">
                     </div>
                     <div class="product--details--left--item">
-                        <img src="./assets/images/itemShow1.png" alt="not found">
+                        <img src="{{asset('frontend/pure-water/assets/images/itemShow1.png')}}" alt="not found">
                     </div>
                     <div class="product--details--left--item">
-                        <img src="./assets/images/itemShow2.png" alt="not found">
+                        <img src="{{asset('frontend/pure-water/assets/images/itemShow2.png')}}" alt="not found">
                     </div>
                 </div>
             </div>
@@ -718,88 +718,30 @@
                                   </div>
                                 </div>                                       
                             </div>
-                            <form action="#">
+                            {{-- <form action="{{route('rating.product')}}" method="post">
+                              @csrf
                                 <!-- user rating -->
+                               
                                 <div class="user--rating--main">
-                                    <div class="rating--header">
-                                        <h4 class="footer-info-box-heading">Rating</h4>
-                                    </div>
-                                    <div class="user--rating--wrapper">
-                                        <div class="user--rating">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                                                <g clip-path="url(#clip0_22107_2052)">
-                                                  <path d="M27.754 11.515L21.5007 17.92L22.9707 26.985C23.1002 27.7084 22.315 28.238 21.6874 27.895L13.999 23.6367V0.0350342C14.3257 0.0350342 14.6524 0.186701 14.7924 0.501701L18.654 8.7267L27.2524 10.0334C27.971 10.1617 28.2359 11.0075 27.754 11.515Z" fill="#ECEFF1"/>
-                                                  <path d="M13.9988 0.0350342V23.6367L6.3105 27.895C5.69334 28.2415 4.8965 27.7165 5.02717 26.985L6.49717 17.92L0.243837 11.515C0.132684 11.3984 0.0555536 11.2536 0.0207962 11.0963C-0.0139613 10.9389 -0.00502135 10.7751 0.046648 10.6225C0.0983173 10.4699 0.190747 10.3343 0.313931 10.2305C0.437115 10.1267 0.586358 10.0585 0.745503 10.0334L9.34384 8.7267L13.2055 0.501701C13.3455 0.186701 13.6722 0.0350342 13.9988 0.0350342Z" fill="#ECEFF1"/>
-                                                </g>
-                                                <defs>
-                                                  <clipPath id="clip0_22107_2052">
-                                                    <rect width="28" height="28" fill="white"/>
-                                                  </clipPath>
-                                                </defs>
-                                            </svg>
-                                        </div>
-                                        <div class="user--rating">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                                                <g clip-path="url(#clip0_22107_2052)">
-                                                  <path d="M27.754 11.515L21.5007 17.92L22.9707 26.985C23.1002 27.7084 22.315 28.238 21.6874 27.895L13.999 23.6367V0.0350342C14.3257 0.0350342 14.6524 0.186701 14.7924 0.501701L18.654 8.7267L27.2524 10.0334C27.971 10.1617 28.2359 11.0075 27.754 11.515Z" fill="#ECEFF1"/>
-                                                  <path d="M13.9988 0.0350342V23.6367L6.3105 27.895C5.69334 28.2415 4.8965 27.7165 5.02717 26.985L6.49717 17.92L0.243837 11.515C0.132684 11.3984 0.0555536 11.2536 0.0207962 11.0963C-0.0139613 10.9389 -0.00502135 10.7751 0.046648 10.6225C0.0983173 10.4699 0.190747 10.3343 0.313931 10.2305C0.437115 10.1267 0.586358 10.0585 0.745503 10.0334L9.34384 8.7267L13.2055 0.501701C13.3455 0.186701 13.6722 0.0350342 13.9988 0.0350342Z" fill="#ECEFF1"/>
-                                                </g>
-                                                <defs>
-                                                  <clipPath id="clip0_22107_2052">
-                                                    <rect width="28" height="28" fill="white"/>
-                                                  </clipPath>
-                                                </defs>
-                                            </svg>
-                                        </div>
-                                        <div class="user--rating">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                                                <g clip-path="url(#clip0_22107_2052)">
-                                                  <path d="M27.754 11.515L21.5007 17.92L22.9707 26.985C23.1002 27.7084 22.315 28.238 21.6874 27.895L13.999 23.6367V0.0350342C14.3257 0.0350342 14.6524 0.186701 14.7924 0.501701L18.654 8.7267L27.2524 10.0334C27.971 10.1617 28.2359 11.0075 27.754 11.515Z" fill="#ECEFF1"/>
-                                                  <path d="M13.9988 0.0350342V23.6367L6.3105 27.895C5.69334 28.2415 4.8965 27.7165 5.02717 26.985L6.49717 17.92L0.243837 11.515C0.132684 11.3984 0.0555536 11.2536 0.0207962 11.0963C-0.0139613 10.9389 -0.00502135 10.7751 0.046648 10.6225C0.0983173 10.4699 0.190747 10.3343 0.313931 10.2305C0.437115 10.1267 0.586358 10.0585 0.745503 10.0334L9.34384 8.7267L13.2055 0.501701C13.3455 0.186701 13.6722 0.0350342 13.9988 0.0350342Z" fill="#ECEFF1"/>
-                                                </g>
-                                                <defs>
-                                                  <clipPath id="clip0_22107_2052">
-                                                    <rect width="28" height="28" fill="white"/>
-                                                  </clipPath>
-                                                </defs>
-                                            </svg>
-                                        </div>
-                                        <div class="user--rating">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                                                <g clip-path="url(#clip0_22107_2052)">
-                                                  <path d="M27.754 11.515L21.5007 17.92L22.9707 26.985C23.1002 27.7084 22.315 28.238 21.6874 27.895L13.999 23.6367V0.0350342C14.3257 0.0350342 14.6524 0.186701 14.7924 0.501701L18.654 8.7267L27.2524 10.0334C27.971 10.1617 28.2359 11.0075 27.754 11.515Z" fill="#ECEFF1"/>
-                                                  <path d="M13.9988 0.0350342V23.6367L6.3105 27.895C5.69334 28.2415 4.8965 27.7165 5.02717 26.985L6.49717 17.92L0.243837 11.515C0.132684 11.3984 0.0555536 11.2536 0.0207962 11.0963C-0.0139613 10.9389 -0.00502135 10.7751 0.046648 10.6225C0.0983173 10.4699 0.190747 10.3343 0.313931 10.2305C0.437115 10.1267 0.586358 10.0585 0.745503 10.0334L9.34384 8.7267L13.2055 0.501701C13.3455 0.186701 13.6722 0.0350342 13.9988 0.0350342Z" fill="#ECEFF1"/>
-                                                </g>
-                                                <defs>
-                                                  <clipPath id="clip0_22107_2052">
-                                                    <rect width="28" height="28" fill="white"/>
-                                                  </clipPath>
-                                                </defs>
-                                            </svg>
-                                        </div>
-                                        <div class="user--rating">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                                                <g clip-path="url(#clip0_22107_2052)">
-                                                  <path d="M27.754 11.515L21.5007 17.92L22.9707 26.985C23.1002 27.7084 22.315 28.238 21.6874 27.895L13.999 23.6367V0.0350342C14.3257 0.0350342 14.6524 0.186701 14.7924 0.501701L18.654 8.7267L27.2524 10.0334C27.971 10.1617 28.2359 11.0075 27.754 11.515Z" fill="#ECEFF1"/>
-                                                  <path d="M13.9988 0.0350342V23.6367L6.3105 27.895C5.69334 28.2415 4.8965 27.7165 5.02717 26.985L6.49717 17.92L0.243837 11.515C0.132684 11.3984 0.0555536 11.2536 0.0207962 11.0963C-0.0139613 10.9389 -0.00502135 10.7751 0.046648 10.6225C0.0983173 10.4699 0.190747 10.3343 0.313931 10.2305C0.437115 10.1267 0.586358 10.0585 0.745503 10.0334L9.34384 8.7267L13.2055 0.501701C13.3455 0.186701 13.6722 0.0350342 13.9988 0.0350342Z" fill="#ECEFF1"/>
-                                                </g>
-                                                <defs>
-                                                  <clipPath id="clip0_22107_2052">
-                                                    <rect width="28" height="28" fill="white"/>
-                                                  </clipPath>
-                                                </defs>
-                                            </svg>
-                                        </div>
-
-                                    </div>
-                                </div>
+                                  <div class="rating--header">
+                                      <h4 class="footer-info-box-heading">Rating</h4>
+                                  </div>
+                                  <div class="user--rating--wrapper">
+                                      <!-- Stars -->
+                                      <div class="user--rating" data-value="1">&#9733;</div>
+                                      <div class="user--rating" data-value="2">&#9733;</div>
+                                      <div class="user--rating" data-value="3">&#9733;</div>
+                                      <div class="user--rating" data-value="4">&#9733;</div>
+                                      <div class="user--rating" data-value="5">&#9733;</div>
+                                  </div>
+                              </div>
 
                                 <!-- tittle review -->
                                 <div class="title--review--wrapper">
                                     <div class="nr--company--input--main">
                                         <label for="titleReview"><span class="footer-info-box-heading">Title of review</span></label>
                                         <div class="nr--comapny--name--input custom">
-                                            <input type="text" id="titleReview" name="titleReview" placeholder="Give your review a title">
+                                            <input type="text" id="titleReview" name="title" placeholder="Give your review a title">
                                         </div>
                                     </div>
                                 </div>
@@ -809,7 +751,7 @@
                                      <div class="nr--company--input--main">
                                          <label for="companyinstraction"><span class="footer-info-box-heading">How was your overall experience?</span></label>
                                          <div class="nr--comapny--name--input customs">
-                                             <textarea placeholder="Write Here..." name="companyinstraction" id="companyinstraction"></textarea>
+                                             <textarea placeholder="Write Here..." name="description" id="companyinstraction"></textarea>
                                          </div>
                                      </div>
                                  </div>
@@ -818,14 +760,14 @@
                                     <div class="nr--names--input--main">
                                         <label for="companyFirstName custom"><span class="footer-info-box-heading">First Name *</span></label>
                                         <div class="nr--first--name--input">
-                                            <input type="text" id="companyFirstName" name="companyFirstName" placeholder="Enter Your First Name">
+                                            <input type="text" id="companyFirstName" name="name" placeholder="Enter Your First Name">
                                         </div>
                                     </div>
             
                                     <div class="nr--names--input--main">
                                         <label for="companySecondName"><span class="footer-info-box-heading">Email address</span></label>
                                         <div class="nr--first--name--input">
-                                            <input type="email" id="companySecondName" name="companySecondName" placeholder="Enter email address">
+                                            <input type="email" id="companySecondName" name="email" placeholder="Enter email address">
                                         </div>
                                     </div>
                                 </div>
@@ -834,7 +776,141 @@
                                 <div class="title--review--submit">
                                     <button>Submit</button>
                                 </div>
-                            </form>
+                            </form> --}}
+
+
+                            {{-- <form action="{{route('rating.product')}}" method="POST">
+                              @csrf
+                          
+                              <!-- User Rating -->
+                              <div class="user--rating--main">
+                                  <div class="rating--header">
+                                      <h4 class="footer-info-box-heading">Rating</h4>
+                                  </div>
+                                  <div class="user--rating--wrapper">
+                                      <!-- Stars -->
+                                      <div class="user--rating" data-value="1">&#9733;</div>
+                                      <div class="user--rating" data-value="2">&#9733;</div>
+                                      <div class="user--rating" data-value="3">&#9733;</div>
+                                      <div class="user--rating" data-value="4">&#9733;</div>
+                                      <div class="user--rating" data-value="5">&#9733;</div>
+                                  </div>
+                              </div>
+                          
+                              <!-- Hidden input to store rating -->
+                              <input type="hidden" name="rating" id="rating-input">
+                          
+                              <!-- Title of Review -->
+                              <div class="title--review--wrapper">
+                                  <div class="nr--company--input--main">
+                                      <label for="titleReview"><span class="footer-info-box-heading">Title of review</span></label>
+                                      <div class="nr--comapny--name--input custom">
+                                          <input type="text" id="titleReview" name="title" placeholder="Give your review a title">
+                                      </div>
+                                  </div>
+                              </div>
+                          
+                              <!-- Review Text -->
+                              <div class="write--haree--wrapper">
+                                  <div class="nr--company--input--main">
+                                      <label for="companyinstraction"><span class="footer-info-box-heading">How was your overall experience?</span></label>
+                                      <div class="nr--comapny--name--input customs">
+                                          <textarea placeholder="Write Here..." name="description" id="companyinstraction"></textarea>
+                                      </div>
+                                  </div>
+                              </div>
+                          
+                              <!-- Name & Email -->
+                              <div class="nr--names--input--main--wrapper customs">
+                                  <div class="nr--names--input--main">
+                                      <label for="companyFirstName custom"><span class="footer-info-box-heading">First Name *</span></label>
+                                      <div class="nr--first--name--input">
+                                          <input type="text" id="companyFirstName" name="name" placeholder="Enter Your First Name">
+                                      </div>
+                                  </div>
+                          
+                                  <div class="nr--names--input--main">
+                                      <label for="companySecondName"><span class="footer-info-box-heading">Email address</span></label>
+                                      <div class="nr--first--name--input">
+                                          <input type="email" id="companySecondName" name="email" placeholder="Enter email address">
+                                      </div>
+                                  </div>
+                              </div>
+                          
+                              <!-- Submit Button -->
+                              <div class="title--review--submit">
+                                  <button type="submit">Submit</button>
+                              </div>
+                          </form> --}}
+                          
+
+                          <form action="{{ route('rating.product') }}" method="post">
+                            @csrf
+                            {{-- <input type="hidden" name="product_id" value="{{ $product->id }}"> --}}
+                        
+                            <!-- User Rating -->
+                            <div class="user--rating--main">
+                                <div class="rating--header">
+                                    <h4 class="footer-info-box-heading">Rating</h4>
+                                </div>
+                                <div class="user--rating--wrapper">
+                                    <!-- Stars -->
+                                    <div class="user--rating" data-value="1">&#9733;</div>
+                                    <div class="user--rating" data-value="2">&#9733;</div>
+                                    <div class="user--rating" data-value="3">&#9733;</div>
+                                    <div class="user--rating" data-value="4">&#9733;</div>
+                                    <div class="user--rating" data-value="5">&#9733;</div>
+                                </div>
+                            </div>
+                        
+                            <!-- Hidden input to store rating -->
+                            <input type="hidden" name="rating" id="rating-input">
+                        
+                            <!-- Title of Review -->
+                            <div class="title--review--wrapper">
+                                <div class="nr--company--input--main">
+                                    <label for="titleReview"><span class="footer-info-box-heading">Title of review</span></label>
+                                    <div class="nr--comapny--name--input custom">
+                                        <input type="text" id="titleReview" name="title" placeholder="Give your review a title">
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Review Text -->
+                            <div class="write--haree--wrapper">
+                                <div class="nr--company--input--main">
+                                    <label for="companyinstraction"><span class="footer-info-box-heading">How was your overall experience?</span></label>
+                                    <div class="nr--comapny--name--input customs">
+                                        <textarea placeholder="Write Here..." name="description" id="companyinstraction"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Name & Email -->
+                            <div class="nr--names--input--main--wrapper customs">
+                                <div class="nr--names--input--main">
+                                    <label for="companyFirstName custom"><span class="footer-info-box-heading">First Name *</span></label>
+                                    <div class="nr--first--name--input">
+                                        <input type="text" id="companyFirstName" name="name" placeholder="Enter Your First Name">
+                                    </div>
+                                </div>
+                        
+                                <div class="nr--names--input--main">
+                                    <label for="companySecondName"><span class="footer-info-box-heading">Email address</span></label>
+                                    <div class="nr--first--name--input">
+                                        <input type="email" id="companySecondName" name="email" placeholder="Enter email address">
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Submit Button -->
+                            <div class="title--review--submit">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>
+                        
+     
+                          
                         </div>
                     </div>
                 </div>
@@ -953,7 +1029,7 @@
     
                                 <div class="addcard--item">
                                     <div class="cartphoto">
-                                        <img src="./assets/images/cartImage.png" alt="not found">
+                                        <img src="{{asset('frontend/pure-water/assets/images/cartImage.png')}}" alt="not found">
                                     </div>
                                     <div class="cartquantity">
                                         <h4 class="addcartTexts">Aquaslim 24 Naturpur Premium</h4>
@@ -1054,7 +1130,7 @@
                             </div>
     
                             <div class="checkout--btns--main">
-                                <a href="payment.html">Check Out Now</a>
+                                <a href="{{route('payment.page')}}">Check Out Now</a>
                             </div>
                         </div>
     
@@ -1066,3 +1142,49 @@
 </section>
 
 @endsection
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const stars = document.querySelectorAll(".user--rating");
+      let selectedRating = 0; // Store user rating
+  
+      stars.forEach(star => {
+          star.addEventListener("click", function() {
+              selectedRating = this.getAttribute("data-value"); // Get rating
+              highlightStars(selectedRating);
+              console.log("User rating:", selectedRating); // You can send this to your backend
+          });
+  
+          star.addEventListener("mouseover", function() {
+              highlightStars(this.getAttribute("data-value"));
+          });
+  
+          star.addEventListener("mouseout", function() {
+              highlightStars(selectedRating); // Keep selected stars highlighted
+          });
+      });
+  
+      function highlightStars(rating) {
+          stars.forEach(star => {
+              if (star.getAttribute("data-value") <= rating) {
+                  star.style.color = "#FFD700"; // Gold color for selected stars
+              } else {
+                  star.style.color = "#ccc"; // Grey for unselected stars
+              }
+          });
+      }
+  });
+  </script>
+
+<style>
+  .user--rating {
+      font-size: 28px;
+      cursor: pointer;
+      color: #ccc; /* Default color */
+      transition: color 0.2s;
+  }
+  </style>
+    

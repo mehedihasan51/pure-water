@@ -80,6 +80,16 @@ class Helper {
         return response()->json($response, $code);
     }
 
+
+    // status
+    public static function Success($message, $data, $statusCode)
+    {
+        return response()->json([
+            'message' => $message,
+            'data' => $data
+        ], $statusCode);
+    }
+
     /**
      * Returns a standardized error response with the provided data, message, and HTTP status code.
      *

@@ -1,150 +1,147 @@
 @extends('backend.app')
 
-@section('title', 'Clients Feedback')
+@section('title', 'Users')
 
 @section('content')
-
-
 <div class="container">
-  <div class="page-inner">
-    <div class="page-header">
-      <!-- Breadcrumb -->
+    <div class="page-inner">
+      <div class="page-header">
+       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb m-4">
-          <li class="breadcrumb-item"><a href="#">Client</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Clients Feedback</li>
+          <li class="breadcrumb-item"><a href="#">Uder</a></li>
+          <li class="breadcrumb-item active" aria-current="page">User Table</li>
         </ol>
       </nav>
-    </div>
-
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <div class="d-flex align-items-center">
-            <h4 class="card-title">Add Row</h4>
-            <a href="{{ route('clients-feedback.create') }}" class="btn btn-primary btn-round ms-auto" id="addNewPage"><i class="fa fa-plus"></i>
-              Add Clients Feedback</a>
+      </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex align-items-center">
+              <h4 class="card-title">Add Row</h4>
+              <a href="{{ route('users.create') }}" class="btn btn-primary btn-round ms-auto" id="addNewPage"><i class="fa fa-plus"></i>
+                Add User</a>
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="addRowModal"
-            tabindex="-1"
-            role="dialog"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header border-0">
-                  <h5 class="modal-title">
-                    <span class="fw-mediumbold"> New</span>
-                    <span class="fw-light"> Row </span>
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p class="small">
-                    Create a new row using this form, make sure you
-                    fill them all
-                  </p>
-                  <form>
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <div class="form-group form-group-default">
-                          <label>Name</label>
-                          <input
-                            id="addName"
-                            type="text"
-                            class="form-control"
-                            placeholder="fill name"
-                          />
+          <div class="card-body">
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="addRowModal"
+              tabindex="-1"
+              role="dialog"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header border-0">
+                    <h5 class="modal-title">
+                      <span class="fw-mediumbold"> New</span>
+                      <span class="fw-light"> Row </span>
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p class="small">
+                      Create a new row using this form, make sure you
+                      fill them all
+                    </p>
+                    <form>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="form-group form-group-default">
+                            <label>Name</label>
+                            <input
+                              id="addName"
+                              type="text"
+                              class="form-control"
+                              placeholder="fill name"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6 pe-0">
+                          <div class="form-group form-group-default">
+                            <label>Position</label>
+                            <input
+                              id="addPosition"
+                              type="text"
+                              class="form-control"
+                              placeholder="fill position"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group form-group-default">
+                            <label>Office</label>
+                            <input
+                              id="addOffice"
+                              type="text"
+                              class="form-control"
+                              placeholder="fill office"
+                            />
+                          </div>
                         </div>
                       </div>
-                      <div class="col-md-6 pe-0">
-                        <div class="form-group form-group-default">
-                          <label>Position</label>
-                          <input
-                            id="addPosition"
-                            type="text"
-                            class="form-control"
-                            placeholder="fill position"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group form-group-default">
-                          <label>Office</label>
-                          <input
-                            id="addOffice"
-                            type="text"
-                            class="form-control"
-                            placeholder="fill office"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer border-0">
-                  <button
-                    type="button"
-                    id="addRowButton"
-                    class="btn btn-primary"
-                  >
-                    Add
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
+                    </form>
+                  </div>
+                  <div class="modal-footer border-0">
+                    <button
+                      type="button"
+                      id="addRowButton"
+                      class="btn btn-primary"
+                    >
+                      Add
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+    
+            <div class="table-responsive">
+              <table
+                id="datatable"
+                class="display table table-striped table-hover"
+              >
+                <thead>
+                  <tr>
+                    <th class="column-id">#</th>
+                    <th class="column-content">Name</th>
+                    <th class="column-content">Email</th>
+                    <th class="column-content">Phone Number</th>
+                    <th class="column-status">Status</th>
+                    <th style="width: 10%" class="column-action">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
   
-          <div class="table-responsive">
-            <table
-              id="datatable"
-              class="display table table-striped table-hover"
-            >
-              <thead>
-                <tr>
-                  <th class="column-id">#</th>
-                  <th class="column-content">Name</th>
-                  <th class="column-content">Title</th>
-                  <th class="column-content">Rating</th>
-                  <th class="column-content">Description</th>
-                  <th class="column-status">Status</th>
-                  <th style="width: 10%" class="column-action">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-
-                {{-- Dynamic Data --}}
-              </tbody>
-            </table>
+                  {{-- Dynamic Data --}}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+
+
+      </div>
+      </div>
 
 
 @endsection
-
 
 @push('scripts')
     <script>
@@ -169,7 +166,7 @@
                     serverSide: true,
                     pagingType: "full_numbers",
                     ajax: {
-                        url: "{{ route('clients-feedback.index') }}",
+                        url: "{{ route('users.index') }}",
                         type: "GET",
                     },
                     dom: "<'row table-topbar'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>>" +
@@ -194,26 +191,20 @@
                             className: 'text-center'
                         },
                         {
-                            data: 'name',
-                            name: 'name',
+                            data: 'userName',
+                            name: 'userName',
                             orderable: true,
                             searchable: true
                         },
                         {
-                            data: 'title',
-                            name: 'title',
+                            data: 'email',
+                            name: 'email',
                             orderable: true,
                             searchable: true
                         },
                         {
-                            data: 'rating',
-                            name: 'rating',
-                            orderable: true,
-                            searchable: true
-                        },
-                        {
-                            data: 'description',
-                            name: 'description',
+                            data: 'phone_number',
+                            name: 'phone_number',
                             orderable: true,
                             searchable: true
                         },
@@ -268,8 +259,8 @@
         }
 
         // Status Change
-        function statusChange(id) {
-    let url = '{{ route('clients-feedback.status', ':id') }}'.replace(':id', id);
+    function statusChange(id) {
+    let url = '{{ route('users.status', ':id') }}'.replace(':id', id);
 
     $.ajax({
         type: "PATCH",
@@ -309,7 +300,7 @@
 
         // Delete Button
         function deleteItem(id) {
-       let url = '{{ route('clients-feedback.destroy', ':id') }}'.replace(':id', id);
+       let url = '{{ route('users.destroy', ':id') }}'.replace(':id', id);
 
     $.ajax({
         type: "DELETE",

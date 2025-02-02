@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rules\Password;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -12,9 +13,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
-{
-    /**
+
+class UserRegisteredController extends Controller{
+
+     /**
      * Display the registration view.
      */
     public function create(): View
@@ -29,22 +31,22 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'userName' => ['required', 'string', 'max:255','unique:'.User::class],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        $validated = $request->validate([
+            'userName' => ['required', 'string', 'max:255', 'unique:users,userName'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'confirmed', Password::defaults()],
         ]);
-
+    
         $user = User::create([
-            'userName' => $request->userName,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'userName' => $validated['userName'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
         ]);
-
+    
         event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(route('login', absolute: false));
+    
+        // Instead of logging in, redirect to the login page
+        return redirect()->route('login')->with('success', 'Registration successful! Please log in.');
     }
+
 }

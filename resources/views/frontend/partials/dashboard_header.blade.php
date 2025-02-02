@@ -17,7 +17,7 @@
         </form>
 
         <div class="nav--bar--item--wrapper">
-            <a href="partner-details.html">
+            <a href="{{route('partner.page')}}">
                 <div class="nav--bar--item">
                     <div class="nav--bar--svg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31"
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </a>
-            <a href="shop.html">
+            <a href="{{route('user.shop')}}">
                 <div class="nav--bar--item">
                     <div class="nav--bar--svg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"

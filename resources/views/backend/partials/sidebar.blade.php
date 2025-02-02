@@ -34,6 +34,12 @@
               <p>Dashboard</p>
           </a>
       </li>
+        <li class="nav-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
+          <a href="{{ route('users.index') }}">
+              <i class="fas fa-home"></i>
+              <p>Users</p>
+          </a>
+      </li>
         <li class="nav-item {{ request()->routeIs('clients-feedback.index') ? 'active' : '' }}">
           <a href="{{ route('clients-feedback.index') }}" class="sub-item">
             <i class="fa fa-commenting" aria-hidden="true"></i>

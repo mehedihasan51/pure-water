@@ -83,7 +83,8 @@
 
                 <div class="nr--or"><span class="nr--LogIn--with--commonText">Or</span></div>
 
-                <form action="index.html">
+                <form action="{{ route('user.register') }}" method="POST">
+                    @csrf
                     <div class="nr--email--and--password--wrapper">
                         <div class="nr--email--input--main">
                             <label for="email"><span class="input--lebel--text">Username</span></label>
@@ -105,7 +106,7 @@
                             </label>
 
                             <div class="nr--email--input">
-                                <input class="passWordHideSHow" type="password" id="password" name="password">
+                                <input type="password" id="password" name="password">
                                 <div class="forget--pass--icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path d="M15.5799 12C15.5799 13.98 13.9799 15.58 11.9999 15.58C10.0199 15.58 8.41992 13.98 8.41992 12C8.41992 10.02 10.0199 8.42001 11.9999 8.42001C13.9799 8.42001 15.5799 10.02 15.5799 12Z" stroke="#637381" stroke-linecap="round" stroke-linejoin="round"/>
@@ -121,7 +122,8 @@
                             </label>
 
                             <div class="nr--email--input">
-                                <input class="passWordHideSHow" type="password" id="confirm-password" name="confirm-password">
+                                {{-- <input class="passWordHideSHow" type="password" id="confirm-password" name="confirm-password"> --}}
+                                <input class="passWordHideSHow" type="password" id="password_confirmation" name="password_confirmation">
                                 <div class="forget--pass--icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path d="M15.5799 12C15.5799 13.98 13.9799 15.58 11.9999 15.58C10.0199 15.58 8.41992 13.98 8.41992 12C8.41992 10.02 10.0199 8.42001 11.9999 8.42001C13.9799 8.42001 15.5799 10.02 15.5799 12Z" stroke="#637381" stroke-linecap="round" stroke-linejoin="round"/>

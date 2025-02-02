@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', 'Clients Feedback Create')
+@section('title', 'Users Create')
 
 @section('content')
 
@@ -36,14 +36,12 @@
             </div>
             <div class="card-body">
 
-                <form action="{{ route('clients-feedback.store') }}" method="POST">
+                <form action="" method="POST">
 
                     @csrf
 
-               
-
               <div class="row">
-                <div class="col-md-6 col-lg-12">
+                <div class="col-md-12">
                   <div class="form-group">
                     <label for="email2">Name:</label>
                     <input
@@ -54,37 +52,27 @@
                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                   </div>
-                  <div class="form-group">
-                    <label for="password">Title:</label>
+                  <div class="form-group ">
+                    <label for="password">Email:</label>
                     <input
-                    type="text" class="form-control @error('title') is-invalid @enderror"
-                    id="title" name="title" placeholder="Please Enter Title"
-                    value="{{ old('title') }}">
-                       @error('title')
+                    type="text" class="form-control @error('email') is-invalid @enderror"
+                    id="email" name="email" placeholder="Please Enter Title"
+                    value="{{ old('email') }}">
+                       @error('email')
                         <span class="text-danger">{{ $message }}</span>
                          @enderror
                   </div>
                   <div class="form-group">
-                    <label for="password"> Rating:</label>
+                    <label for="number"> Phone Number:</label>
                     <input
                     type="number"
-                    class="form-control @error('rating') is-invalid @enderror"
-                    placeholder="Please enter your rating" name="rating" id="rating"
-                    value="{{ old('rating') }}">
-                      @error('rating')
+                    class="form-control @error('number') is-invalid @enderror"
+                    placeholder="Please enter your Phone Number" name="number" id="number"
+                    value="{{ old('number') }}">
+                      @error('number')
                        <span class="text-danger">{{ $message }}</span>
                        @enderror
                   </div>
-                  <div>
-                    <label for="description" class="form-label">Description:</label>
-                    <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description"
-                        placeholder="Type here...">{{ old('description') }}
-                    
-                    </textarea>
-                    @error('description')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
                 </div>
               </div>
             </div>
@@ -98,18 +86,8 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
 
 
- 
+
 @endsection
-
-@push('scripts')
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-@endpush

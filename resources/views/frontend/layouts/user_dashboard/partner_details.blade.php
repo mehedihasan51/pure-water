@@ -7,7 +7,7 @@
     <div class="partner--details--main">
         <div class="partner--details--left">
             <div class="partner--details--left--img">
-                <img src="./assets/images/partner-detailsP.png" alt="not found">
+                <img src="{{asset('frontend/pure-water/assets/images/partner-detailsP.png')}}" alt="not found">
             </div>
         </div>
         <div class="partner--details--right">

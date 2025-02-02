@@ -10,16 +10,18 @@ class ClientsFeedback extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = [
+        'product_id',
         'rating',
         'description',
         'name',
         'title',
+        'email'
     ];
 
     protected function casts(): array {
         return [
             'id'          => 'integer',
-            'rating'      => 'integer',
+            'rating'      => 'array',
             'description' => 'string',
             'name'        => 'string',
             'title'       => 'string',

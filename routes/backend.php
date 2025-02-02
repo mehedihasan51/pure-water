@@ -5,10 +5,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Backend\DashboardController;
 use App\Http\Controllers\Web\Backend\ClientsFeedbackController;
 use App\Http\Controllers\Web\Backend\ProductsController;
+use App\Http\Controllers\Web\Backend\UsersController;
 
 Route::get("/dashboard", [DashboardController::class,"index"])->middleware(['auth', 'verified'])->name('dashboard');
 
 
+
+
+// Route for User controll
+Route::get('/user-page',[UsersController::class,'index'])->name('users.index');
+Route::get('/user-page/create',[UsersController::class,'create'])->name('users.create');
+Route::patch('/user-page/status/{id}',[UsersController::class,'status'])->name('users.status');
+Route::patch('/user-page/destroy{id}',[UsersController::class,'destroy'])->name('users.destroy');
 
 //! Route for ClientsFeedback Backend
 Route::controller(ClientsFeedbackController::class)->group(function () {

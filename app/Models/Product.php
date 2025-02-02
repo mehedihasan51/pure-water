@@ -16,11 +16,22 @@ class Product extends Model
         'feature_image'
     ];
 
+
+
+    public function category(){
+        return $this->belongsTo(Categorie::class);
+    }
+
     public function product(){
 
    
      return $this->belongsTo(Product::class);
 
 
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

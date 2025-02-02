@@ -83,8 +83,7 @@
 
                 <div class="nr--or"><span class="nr--LogIn--with--commonText">Or</span></div>
 
-                <form action="{{ route('user.login') }}" method="POST">
-
+                <form action="{{ route('user.check') }}" method="POST">
                     @csrf
                     <div class="nr--email--and--password--wrapper">
                         <div class="nr--email--input--main">
@@ -97,10 +96,11 @@
                             @enderror
                         </div>
 
+                       
                         <div class="nr--email--input--main">
-                           
-
+                            <label class="input--lebel--text" for="password">Password</label>
                             <div class="nr--email--input">
+                                
                                <input type="password" id="password" name="password">
                                 <div class="forget--pass--icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -109,8 +109,9 @@
                                     </svg>
                                 </div>
                             </div>
+                           
                             <label for="password">
-                                <span class="input--lebel--text">Password</span>
+                                <span class="input--lebel--text"></span>
                                 <a class="forgetPass" href="{{ route('password.request') }}">Forget Password?</a>
                             </label>
                             @error('password')
@@ -129,46 +130,8 @@
                     
                 </form>
 
-                {{-- <form action="{{ route('login') }}" method="POST">
-                    @csrf
-                    <div class="nr--email--and--password--wrapper">
-                        <div class="nr--email--input--main">
-                            <label for="login"><span class="input--lebel--text">Username or Email</span></label>
-                            <div class="nr--email--input">
-                                <input type="text" id="login" name="login" placeholder="Enter Username or Email" required>
-                            </div>
-                            @error('login')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                
-                        <div class="nr--email--input--main">
-                            <div class="nr--email--input">
-                                <input type="password" id="password" name="password" placeholder="Enter Password" required>
-                            </div>
-                            <label for="password">
-                                <span class="input--lebel--text">Password</span>
-                                <a class="forgetPass" href="{{ route('password.request') }}">Forget Password?</a>
-                            </label>
-                            @error('password')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                
-                    <div class="nr--sign--in--checkbox">
-                        <input class="checkbox" type="checkbox" id="remember" name="remember">
-                        <label for="remember"> <span class="nr--LogIn--with--commonText">Remember Me</span> </label>
-                    </div>
-                
-                    <div class="signIn--btn">
-                        <button type="submit" class="loginSubmit--btn">Sign In</button>
-                    </div>
-                </form> --}}
-                
-
                 <div class="nr--dont--account">
-                    <a class="nr--dont--account--text"  href="{{route('register')}}">Don’t have an account! <span>Sign Up</span></a>
+                    <a class="nr--dont--account--text"  href="{{route('user.register')}}">Don’t have an account! <span>Sign Up</span></a>
                 </div>
             </div>
 

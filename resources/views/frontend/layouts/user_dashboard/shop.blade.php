@@ -147,7 +147,7 @@
                     </div>
                 </a>
                 <!-- card -->
-                <a href="product-details.html">
+                <a href="{{route('product.deteils')}}">
                     <div class="bi-common-card">
                         <img src="{{asset('frontend/pure-water/assets/images/shopItem2.png')}}" alt="" srcset="" class="bi-common-card-img" />
                         <div class="bi-common-card-bottom">

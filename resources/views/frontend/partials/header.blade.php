@@ -9,7 +9,7 @@
     <a class="bi-route {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
     <a class="bi-route {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact us</a>
 </div>
-    <a href="{{route('login')}}" class="auth-btn"> Log In </a>
+    <a href="{{route('user.login')}}" class="auth-btn"> Log In </a>
       <div class="header-for-mobile">
         <div class="bi-header-toggle-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

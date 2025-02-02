@@ -6,7 +6,9 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Web\Auth\UserloginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Web\Backend\DashboardController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Web\Auth\UserRegisteredController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -21,11 +23,9 @@ Route::middleware('guest')->group(function () {
     Route::get('admin', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
-        // user login page
-        Route::get('/login', [UserloginController::class,'login'])->name('login');
-    
 
     Route::post('admin', [AuthenticatedSessionController::class, 'store']);
+
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -62,3 +62,20 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+
+
+     // user login page & register page
+
+
+   Route::get('login', [UserloginController::class, 'login'])->name('user.login');
+   Route::get('register', [UserRegisteredController::class, 'create'])->name('user.register');
+   Route::post('/register', [UserRegisteredController::class, 'store']);
+
+  
+    
+   // access authtatic usrr
+        
+   Route::post('login', [UserloginController::class, 'userCheck'])->name('user.check');
+//    Route::post('logout', [UserloginController::class, 'destroy'])->name('user.logout');
+    
+
