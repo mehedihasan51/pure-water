@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Web\Backend\UsersController;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -20,11 +21,11 @@ Route::middleware('guest')->group(function () {
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
-    Route::get('admin', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
+    // Route::get('admin', [AuthenticatedSessionController::class, 'create'])
+    //     ->name('login');
 
 
-    Route::post('admin', [AuthenticatedSessionController::class, 'store']);
+    // Route::post('admin', [AuthenticatedSessionController::class, 'store']);
 
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
@@ -71,11 +72,15 @@ Route::middleware('auth')->group(function () {
    Route::get('register', [UserRegisteredController::class, 'create'])->name('user.register');
    Route::post('/register', [UserRegisteredController::class, 'store']);
 
-  
-    
-   // access authtatic usrr
-        
+   // access authtatic user
    Route::post('login', [UserloginController::class, 'userCheck'])->name('user.check');
-//    Route::post('logout', [UserloginController::class, 'destroy'])->name('user.logout');
+   Route::post('logout', [UserloginController::class, 'logout'])->name('logout');
+
+   Route::get('user', [UsersController::class, 'index'])->name('user.index');
+//    Route::post('user/create', [UsersController::class, 'create'])->name('users.create');
+//    Route::get('/users/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
+//    Route::put('/users/{id}', [UsersController::class, 'update'])->name('user.update');
+//    Route::patch('user/status/{id}', [UsersController::class, 'status'])->name('user.status');
+//    Route::delete('user/destory/{id}', [UsersController::class, 'destory'])->name('user.destory');
     
 

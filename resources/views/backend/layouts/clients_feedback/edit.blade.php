@@ -41,7 +41,6 @@
                     @csrf
                     @method('PUT')
 
-                
 
               <div class="row">
                 <div class="col-md-6 col-lg-12">

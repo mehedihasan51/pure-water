@@ -76,7 +76,7 @@
                     </div> --}}
 
                     <div class="log--out--btn">
-                        <form action="{{ route('user.logout') }}" method="POST">
+                        <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn log--out--btn--profile--edit">Log Out</button>
                         </form>

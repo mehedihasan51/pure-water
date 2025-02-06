@@ -82,7 +82,7 @@ class Helper {
 
 
     // status
-    public static function Success($message, $data, $statusCode)
+    public static function success($message, $data, $statusCode)
     {
         return response()->json([
             'message' => $message,

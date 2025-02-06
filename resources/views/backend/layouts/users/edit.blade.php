@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', 'Users Create')
+@section('title', 'Users Edit')
 
 @section('content')
 
@@ -36,8 +36,9 @@
             </div>
             <div class="card-body">
 
-                <form action="{{route('users.store')}}" method="POST">
-                  @csrf
+                <form action="{{ route('user.update', $user->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
 
                  <div class="row">
                 <!-- First Row -->
@@ -46,7 +47,7 @@
                         <label for="fullName">Full Name *</label>
                         <input type="text" class="form-control @error('fullName') is-invalid @enderror"
                                id="fullName" name="fullName" placeholder="Please Enter fullName"
-                               value="{{ old('fullName') }}"/>
+                               value="{{ old('fullName', $user->fullName) }}"/>
                         @error('fullName')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -58,7 +59,7 @@
                         <label for="userName">User Name *</label>
                         <input type="text" class="form-control @error('userName') is-invalid @enderror"
                                id="userName" name="userName" placeholder="Please Enter User Name"
-                               value="{{ old('userName') }}">
+                               value="{{ old('userName',$user->userName) }}">
                         @error('userName')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -73,7 +74,7 @@
                         <label for="email">Email *</label>
                         <input type="email" class="form-control @error('number') is-invalid @enderror"
                                placeholder="Please enter your Email" name="email" id="email"
-                               value="{{ old('email') }}">
+                               value="{{ old('email',$user->email) }}">
                         @error('email')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -85,7 +86,7 @@
                         <label for="phone">Phone Number *</label>
                         <input type="number" class="form-control @error('phone') is-invalid @enderror"
                                id="phone" name="phone_number" placeholder="Please Enter Phone Number"
-                               value="{{ old('phone_number') }}">
+                               value="{{ old('phone_number',$user->phone_number) }}">
                         @error('phone_number')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -123,7 +124,7 @@
             </div>
             <div class="card-action">
               <button type="submit" class="btn btn-success">Submit</button>
-              <a href="{{ route('clients-feedback.index') }}" class="btn btn-danger">Cancel</a>
+              <a href="{{ route('user.index') }}" class="btn btn-danger">Cancel</a>
             </div>
 
         </form>
@@ -132,7 +133,6 @@
       </div>
     </div>
     </div>
-
 
 
 @endsection

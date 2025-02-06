@@ -36,8 +36,26 @@
       </li>
         <li class="nav-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
           <a href="{{ route('users.index') }}">
-              <i class="fas fa-home"></i>
+            <i class="fa-solid fa-user"></i>
               <p>Users</p>
+          </a>
+      </li>
+        <li class="nav-item {{ request()->routeIs('about.index') ? 'active' : '' }}">
+          <a href="{{ route('about.index') }}">
+            <i class="fa-solid fa-circle-info"></i>
+              <p>About Us</p>
+          </a>
+      </li>
+        <li class="nav-item {{ request()->routeIs('faq.index') ? 'active' : '' }}">
+          <a href="{{ route('faq.index') }}">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+              <p>FAQ</p>
+          </a>
+      </li>
+        <li class="nav-item {{ request()->routeIs('our-mission.index') ? 'active' : '' }}">
+          <a href="{{ route('our-mission.index') }}">
+            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+              <p>Our Mission</p>
           </a>
       </li>
         <li class="nav-item {{ request()->routeIs('clients-feedback.index') ? 'active' : '' }}">

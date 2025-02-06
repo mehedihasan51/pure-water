@@ -73,8 +73,8 @@ class ContactController extends Controller {
          $imagePaths = [];
 
       foreach ($request->file('images') as $image) {
-        $imageName = time() . '_' . $image->getClientOriginalName(); // Unique name
-        $image->move(public_path('uploads/contact_img'), $imageName); // Move to public/images/
+        $imageName = time() . '_' . $image->getClientOriginalName(); 
+        $image->move(public_path('uploads/contact_img'), $imageName);
         $imagePaths[] = 'images/' . $imageName; // Store relative path
      }
 

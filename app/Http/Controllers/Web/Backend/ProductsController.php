@@ -76,7 +76,7 @@ class ProductsController extends Controller{
                 $image = $request->file('feature_image');
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 if ($product->feature_image && file_exists(public_path($product->feature_image))) {
-                    @unlink(public_path($product->cover_photo));
+                    @unlink(public_path($product->feature_image));
                 }
                 $imagePath = Helper::fileUpload($image, 'feature_image', $imageName);
                 if (!$imagePath) {

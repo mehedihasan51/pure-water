@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', 'Users')
+@section('title', 'Faq')
 
 @section('content')
 <div class="container">
@@ -9,18 +9,18 @@
        <!-- Breadcrumb -->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb m-4">
-          <li class="breadcrumb-item"><a href="#">Uder</a></li>
-          <li class="breadcrumb-item active" aria-current="page">User Table</li>
+          <li class="breadcrumb-item"><a href="#">Faq</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Answer</li>
         </ol>
       </nav>
       </div>
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header"> 
             <div class="d-flex align-items-center">
-              <h4 class="card-title">Add Row</h4>
-              <a href="{{ route('users.create') }}" class="btn btn-primary btn-round ms-auto" id="addNewPage"><i class="fa fa-plus"></i>
-                Add User</a>
+              <h4 class="card-title">Question and Answer Table</h4>
+              <a href="{{route('faq.create')}}" class="btn btn-primary btn-round ms-auto" id="addNewPage"><i class="fa fa-plus"></i>
+                Add Faq</a>
             </div>
           </div>
           <div class="card-body">
@@ -119,10 +119,8 @@
                 <thead>
                   <tr>
                     <th class="column-id">#</th>
-                    <th class="column-content">User Name</th>
-                    <th class="column-content">Full Name</th>
-                    <th class="column-content">Email</th>
-                    <th class="column-content">Phone Number</th>
+                    <th class="column-content">Question</th>
+                    <th class="column-content">Answer</th>
                     <th class="column-status">Status</th>
                     <th style="width: 10%" class="column-action">Action</th>
                   </tr>
@@ -140,7 +138,6 @@
 
       </div>
       </div>
-
 
 @endsection
 
@@ -167,7 +164,7 @@
                     serverSide: true,
                     pagingType: "full_numbers",
                     ajax: {
-                        url: "{{ route('users.index') }}",
+                        url: "{{ route('faq.index') }}",
                         type: "GET",
                     },
                     dom: "<'row table-topbar'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>>" +
@@ -192,26 +189,14 @@
                             className: 'text-center'
                         },
                         {
-                            data: 'userName',
-                            name: 'userName',
+                            data: 'question',
+                            name: 'question',
                             orderable: true,
                             searchable: true
                         },
                         {
-                            data: 'fullName',
-                            name: 'fullName',
-                            orderable: true,
-                            searchable: true
-                        },
-                        {
-                            data: 'email',
-                            name: 'email',
-                            orderable: true,
-                            searchable: true
-                        },
-                        {
-                            data: 'phone_number',
-                            name: 'phone_number',
+                            data: 'answer',
+                            name: 'answer',
                             orderable: true,
                             searchable: true
                         },
@@ -247,6 +232,8 @@
             }
         });
 
+        
+
         // Status Change Confirm Alert
         function showStatusChangeAlert(id) {
             event.preventDefault();
@@ -267,7 +254,7 @@
 
         // Status Change
     function statusChange(id) {
-    let url = '{{ route('users.status', ':id') }}'.replace(':id', id);
+    let url = '{{ route('faqs.status', ':id') }}'.replace(':id', id);
 
     $.ajax({
         type: "PATCH",
@@ -276,17 +263,16 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         },
         success: function(resp) {
-            console.log('Success:', resp); // Debugging
+            console.log('Success:', resp); 
             $('#datatable').DataTable().ajax.reload();
             toastr.success(resp.message);
         },
         error: function(xhr, status, error) {
-            console.error('Error:', xhr.responseText); // Debugging
-            toastr.error('An error occurred. Please try again.');
-        }
-    });
-}
-
+         console.error('Error:', xhr.responseText);
+        alert('Error: ' + xhr.responseText);
+       }
+     });
+    }
         // delete Confirm
         function showDeleteConfirm(id) {
             event.preventDefault();
@@ -307,7 +293,7 @@
 
         // Delete Button
         function deleteItem(id) {
-       let url = '{{ route('user.destory', ':id') }}'.replace(':id', id);
+       let url = '{{ route('faqs.destroy', ':id') }}'.replace(':id', id);
 
     $.ajax({
         type: "DELETE",
@@ -323,9 +309,8 @@
             toastr.error('An error occurred. Please try again.');
         }
     });
+
+    
 }
-
-
-
     </script>
 @endpush
